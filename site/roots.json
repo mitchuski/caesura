@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "root": "sha256:11aee3bf724e2705efa7aabe59d2b6455c9b6bf29a2e2167dfaa2ffaa99b2bcd",
+    "attested": false,
+    "signed": "",
+    "owner_signed": "",
+    "ceremony": "",
+    "cost_usd": null,
+    "round": "smoke-pay-compute · executed",
+    "leaves": 26,
+    "read": "2026-11-09",
+    "network": "testnet",
+    "tx": "6hzXkyE6ob2k2hRD5VFdye3sUADJgyPkBpiEbaMrgZJH"
+  }
+]

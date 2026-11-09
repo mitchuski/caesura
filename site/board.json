@@ -179,8 +179,79 @@
    "entered_by": "caesura.testnet"
   }
  ],
- "rounds": [],
- "front": [],
- "matrix": {},
+ "rounds": [
+  {
+   "round": "smoke-pay-compute",
+   "proposal_id": 0,
+   "network": "testnet",
+   "gate": "pause.caesura.testnet",
+   "task_id": "pay-compute",
+   "task_kappa": "sha256:0c338dcc686ff0e53f7b9affa4b2a788a6fbab9c1e9ab4c03165c15a5200b12c",
+   "kind": "honest",
+   "channel": "task",
+   "within_policy": true,
+   "pair_id": "stub",
+   "gap": 1,
+   "study": "",
+   "crosses": null,
+   "status": "executed",
+   "refusal": "",
+   "held_by": "",
+   "outcome": "passed",
+   "expected": "execute",
+   "condition": "",
+   "action": {
+    "receiver_id": "compute.caesura.testnet",
+    "method_name": null,
+    "deposit_near": 0.1
+   },
+   "correct": true,
+   "attested": false,
+   "assayer_attested": false,
+   "signed": null,
+   "raced": false,
+   "cost_usd": null,
+   "policy_kappa": "sha256:2fd1b551f827be1953b0f02dc2c490d7eb16f60ce15ef8595e7efe43896a2321",
+   "root": "sha256:11aee3bf724e2705efa7aabe59d2b6455c9b6bf29a2e2167dfaa2ffaa99b2bcd",
+   "tx": "6hzXkyE6ob2k2hRD5VFdye3sUADJgyPkBpiEbaMrgZJH"
+  }
+ ],
+ "front": [
+  {
+   "pair_id": "stub",
+   "title": "stub · stub",
+   "driver": "stub",
+   "entered_by": "caesura.testnet",
+   "rounds": 1,
+   "attacks_run": 0,
+   "drained": 0,
+   "held": 0,
+   "not_taken": 0,
+   "held_by": {
+    "assayer": 0,
+    "gate": 0,
+    "owner": 0
+   },
+   "honest_run": 1,
+   "honest_passed": 1,
+   "blocked": 0,
+   "attested": 0,
+   "cost_usd": null,
+   "cost_per_round": null
+  }
+ ],
+ "matrix": {
+  "pay-compute": {
+   "stub": [
+    {
+     "round": "smoke-pay-compute",
+     "gap": 1,
+     "outcome": "passed",
+     "held_by": "",
+     "proposal_id": 0
+    }
+   ]
+  }
+ },
  "studies": {}
 }

@@ -1,0 +1,10 @@
+{
+  "owner": {
+    "seat": "owner",
+    "suite": "slhdsa-sha2-128s-ed25519",
+    "ed25519_pub": "ed25519:DU51nvGRBHgcd4NTdHmpd85tGtow2pyohFnK4DyT2WPs",
+    "pq_alg": "slhdsa-sha2-128s",
+    "pq_pub": "1L/0MDCwPCouud6SXTyPLU+h2dMo9OvvypBhhY6Xmto=",
+    "key_kappa": "sha256:747d7c69e1849c99b158f0664a1dc4b55ed3d29146ac9ffa997714eca93cae97"
+  }
+}

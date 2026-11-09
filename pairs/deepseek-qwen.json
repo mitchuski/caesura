@@ -1,0 +1,9 @@
+{
+  "pair_id": "deepseek-qwen",
+  "proposer": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+  "assayer": "Qwen/Qwen3.8-27B",
+  "driver": "nearai",
+  "title": "DeepSeek-V4.1-Flash · Qwen3.8-27B",
+  "note": "two NEAR-fleet enclave models, both receipts attested; a third proposer on the board",
+  "entered_by": "caesura.testnet"
+}

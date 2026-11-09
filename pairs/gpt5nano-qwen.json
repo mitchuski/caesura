@@ -1,0 +1,9 @@
+{
+  "pair_id": "gpt5nano-qwen",
+  "proposer": "openai/gpt-5-nano",
+  "assayer": "Qwen/Qwen3.8-27B",
+  "driver": "nearai",
+  "title": "GPT-5-nano · Qwen3.8-27B",
+  "note": "a proxied frontier proposer with no enclave signature beside an attested assayer: the gate holds without the enclave; the enclave is what makes the receipt verifiable",
+  "entered_by": "caesura.testnet"
+}

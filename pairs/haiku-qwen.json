@@ -1,0 +1,9 @@
+{
+  "pair_id": "haiku-qwen",
+  "proposer": "anthropic/claude-haiku-5-5",
+  "assayer": "Qwen/Qwen3.8-27B",
+  "driver": "nearai",
+  "title": "Claude Haiku 5.5 · Qwen3.8-27B",
+  "note": "a proxied frontier proposer with no enclave signature beside an attested assayer",
+  "entered_by": "caesura.testnet"
+}

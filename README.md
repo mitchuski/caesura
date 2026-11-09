@@ -147,11 +147,13 @@ about 31 TGas and SLH-DSA-SHA2-128s about 18 TGas, both inside one method's budg
 
 ```
 contract/   the gate (Rust, near-sdk-rs 5.29): policy · propose · assay · commit_root · owner door · unit tests
+registry/   the registry of gates (Rust): register (owner-checked by cross-contract call) · unregister · list_gates
 seats/      the two seats (Node): prompts (gap ladder), drivers (stub | nearai | mixed), round runner
 lib/        dcbor.mjs (canonical dCBOR + sha256 addresses) · evidence.mjs (mint/verify) · nearai.mjs (signed
             inference receipts + attestation) · receipt_verify.mjs (ed25519, node:crypto only) · chain.mjs
             (near-api-js) · hybrid.mjs (composite signatures, @noble/post-quantum)
-tools/      deploy.mjs · owner.mjs · verify.mjs · verify_py.py · roots.mjs · board.mjs · keys.mjs · abuse.mjs
+tools/      deploy.mjs · owner.mjs · verify.mjs · verify_py.py · roots.mjs · board.mjs · keys.mjs · abuse.mjs · registry.mjs
+scripts/    rounds-demo.sh (the demonstration rounds) · rounds-gap.sh (the gap study), as run for the board
 tasks/      policies, key policies and the task fixtures  ·  corpus/  the index  ·  pairs/  the seat pairs
 bundles/    sealed rounds  ·  site/  the board (static, deployed to caesura.mages.city)
 ```
@@ -196,7 +198,15 @@ node tools/owner.mjs state --gate <name>.<you>.testnet
 
 `deploy.mjs` creates the sub-account, deploys, installs the seat keys, deletes the full-access
 key it used, and writes `.env.caesura` with the gate id and the two seat private keys. Give
-each key to its seat and nothing else. Add the gate to `site/gates.json` and the board reads it.
+each key to its seat and nothing else. Then register the gate on chain:
+
+```bash
+node tools/registry.mjs register <name>.<you>.testnet --owner <you>.testnet --label "your gate"
+```
+
+The registry `gates.caesura.testnet` (`registry/`) asks the gate for its owner and keeps the entry
+only if that is you; the board reads `list_gates` and then reads each gate itself. `site/gates.json`
+is the fallback list when the registry cannot be read.
 
 ## Provenance, for the judges
 

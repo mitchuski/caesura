@@ -42,7 +42,8 @@ Repository: https://github.com/mitchuski/caesura (Apache-2.0). Start with its RE
 https://caesura.mages.city reads every gate listed in gates.json live from NEAR testnet
 (get_state, list_proposals, list_roots) and shows rounds, refusals, attacks held and roots.
 Gates (owner caesura.testnet): pause.caesura.testnet carries the demonstration rounds, gap.caesura.testnet the gap study. Every round on them was run inside the hackathon window. Deploy your own with tools/deploy.mjs,
-run a poisoned round, verify, then add your gate id to gates.json to join the board.
+run a poisoned round, verify, then register your gate on chain (tools/registry.mjs register; the
+registry gates.caesura.testnet keeps it only if you are the owner the gate names) to join the board.
 
 ## Links
 

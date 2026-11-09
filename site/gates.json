@@ -1,4 +1,8 @@
-[
-  { "id": "pause.caesura.testnet", "owner": "caesura.testnet", "label": "the first gate · demonstration rounds", "network": "testnet" },
-  { "id": "gap.caesura.testnet", "owner": "caesura.testnet", "label": "the second gate · the gap study", "network": "testnet" }
-]
+{
+  "registry": "gates.caesura.testnet",
+  "network": "testnet",
+  "fallback": [
+    { "id": "pause.caesura.testnet", "owner": "caesura.testnet", "label": "the first gate · demonstration rounds", "network": "testnet" },
+    { "id": "gap.caesura.testnet", "owner": "caesura.testnet", "label": "the second gate · the gap study", "network": "testnet" }
+  ]
+}

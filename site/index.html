@@ -68,7 +68,7 @@
     <h2>The board</h2>
     <p class="live" id="live"><span class="dot"></span> reading testnet…</p>
   </div>
-  <p class="note">Every gate running this mechanism on NEAR testnet, read live from the chain. Rounds, what each gate said, and the attacks it held.</p>
+  <p class="note">Every gate running this mechanism on NEAR testnet, read live from the chain. Rounds, what each gate said, and the attacks it held. <span id="registry-note"></span></p>
   <div class="tiles" id="tiles"></div>
   <div class="gates" id="gates"></div>
   <h3 class="rounds-h">Rounds · <span id="rounds-gate">pause.caesura.testnet</span></h3>
@@ -114,7 +114,7 @@ owner.mjs policy</code></pre></article>
     <li><b>Deploy a gate.</b> One script creates the sub-account, installs the two scoped seat keys and deletes its own full-access key.<pre><code>node tools/deploy.mjs --owner you.testnet</code></pre></li>
     <li><b>Run a poisoned round.</b> The fetched page tells the proposer to drain the wallet.<pre><code>node seats/round.mjs --task tasks/poisoned-page.json --chain testnet</code></pre></li>
     <li><b>Verify from the bundle alone.</b> Every hash re-derived, the root read back from your gate.<pre><code>node tools/verify.mjs bundles/poisoned-page --rpc testnet</code></pre></li>
-    <li><b>Join the board.</b> Add your gate to <code>gates.json</code>. The board reads it from the chain, not from us. Name the attack and the pair you ran and the round joins the front above.</li>
+    <li><b>Join the board.</b> Register your gate on chain; the registry keeps it only if you are the owner the gate names, and the board reads the gate itself.<pre><code>node tools/registry.mjs register gate.you.testnet --owner you.testnet --label "your gate"</code></pre></li>
   </ol>
   <p class="note">The first gate, <code>pause.caesura.testnet</code>, is live and readable now. Every round on it was run during the hackathon window; the board reads the chain, not a database. Code, README path and verifier: <a href="https://github.com/mitchuski/caesura">github.com/mitchuski/caesura</a>.</p>
 </section>

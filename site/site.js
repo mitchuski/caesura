@@ -159,7 +159,19 @@ const SUITE_TITLE = { 'ed25519': 'ed25519 signed', 'mldsa65-ed25519': 'ML-DSA-65
       roundsEl.appendChild(row)
     })
   }
-  rootsLoaded.then(function () { return fetch('gates.json', { cache: 'no-store' }) }).then(function (r) { return r.json() }).then(function (gates) {
+  // the registry on chain names the gates; gates.json is the fallback when it cannot be read
+  function gatesFrom(cfg) {
+    if (Array.isArray(cfg)) return Promise.resolve(cfg)
+    var fallback = cfg.fallback || [], network = cfg.network || 'testnet'
+    if (!cfg.registry) return Promise.resolve(fallback)
+    return view(network, cfg.registry, 'list_gates', { from: 0, limit: 100 }).then(function (rows) {
+      if (!rows || !rows.length) return fallback
+      registryNote(cfg.registry, rows.length)
+      return rows.map(function (e) { return { id: e.gate, owner: e.owner, label: e.label, network: network } })
+    }).catch(function () { return fallback })
+  }
+  function registryNote(id, n) { var el2 = document.getElementById('registry-note'); if (el2) el2.textContent = n + (n === 1 ? ' gate' : ' gates') + ' named by the registry ' + id + ', each read from the chain' }
+  rootsLoaded.then(function () { return fetch('gates.json', { cache: 'no-store' }) }).then(function (r) { return r.json() }).then(gatesFrom).then(function (gates) {
     return Promise.all(gates.map(loadGate)).then(function (all) {
       var okN = all.filter(function (x) { return x.ok }).length
       live.className = 'live ' + (okN ? 'ok' : 'err'); live.innerHTML = '<span class="dot"></span> ' + (okN ? 'live · ' + okN + ' of ' + all.length + ' gates read from testnet' : 'could not reach testnet')

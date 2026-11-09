@@ -5,3 +5,4 @@ bundles/*/private/
 *.log
 keys/seats*.json
 keys/owner.json
+registry/target/

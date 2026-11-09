@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // deploy.mjs — stand the gate up on testnet, then lock it.
 //
-//   node tools/deploy.mjs --owner caesura.testnet [--gate gate.caesura.testnet] [--fund 5] [--policy tasks/policy.json]
+//   node tools/deploy.mjs --owner caesura.testnet [--gate gate.caesura.testnet] [--fund 5] [--policy tasks/policy.json] [--env .env.caesura]
 //
 // 1. create the gate sub-account with a temporary full-access key and <fund> NEAR
 // 2. deploy contract/target/wasm32-unknown-unknown/release/caesura_gate.wasm and call new(owner, policy)
@@ -9,7 +9,7 @@
 // 4. generate two seat keys; owner calls set_seat_keys → the contract adds them to its own
 //    account as function-call keys scoped to propose / assay,commit_root
 // 5. delete the temporary full-access key: from here only the code and the two seats act
-// 6. write .env.caesura (gitignored) with the gate id and the two seat keys
+// 6. write the env file (default .env.caesura, gitignored) with the gate id and the two seat keys
 //
 // Owner credentials: ~/.near-credentials/testnet/<owner>.json (near-cli-rs legacy keychain).
 
@@ -27,6 +27,7 @@ const gateId = opt('gate', `gate.${ownerId}`)
 const fund = Number(opt('fund', '5'))
 const policyPath = opt('policy', 'tasks/policy.json')
 const wasmPath = opt('wasm', 'contract/target/wasm32-unknown-unknown/release/caesura_gate.wasm')
+const envPath = opt('env', '.env.caesura')
 
 const credPath = join(homedir(), '.near-credentials', network, ownerId + '.json')
 if (!existsSync(credPath)) { console.error('no owner credentials at ' + credPath); process.exit(1) }
@@ -87,5 +88,5 @@ log(`state: owner ${state.owner} · paused ${state.paused} · proposals ${state.
 
 // 6
 const env = [`CAESURA_GATE=${gateId}`, `CAESURA_NETWORK=${network}`, `CAESURA_PROPOSER_KEY=${proposer.privateKey}`, `CAESURA_ASSAYER_KEY=${assayer.privateKey}`, `CAESURA_PROPOSER_PUB=${proposer.publicKey}`, `CAESURA_ASSAYER_PUB=${assayer.publicKey}`, '']
-writeFileSync('.env.caesura', env.join('\n'))
-console.log('wrote .env.caesura (gitignored). Gate is live and locked.')
+writeFileSync(envPath, env.join('\n'))
+console.log(`wrote ${envPath} (gitignored). Gate is live and locked.`)

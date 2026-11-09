@@ -22,8 +22,9 @@ power. A sub-account with no full-access key is the sandbox. NEAR AI Cloud runs 
 as private inference in a TEE, and each answer comes back signed over its exact bytes. The
 gate's policy, proposals, verdicts and roots are contract state anyone reads.
 
-Live on testnet: gate `pause.caesura.testnet`, owner `caesura.testnet`.
-Board: https://caesura.mages.city reads the gate from the chain in the browser.
+Live on testnet, owner `caesura.testnet`: gate `pause.caesura.testnet` carries the demonstration
+rounds; gate `gap.caesura.testnet` carries the gap study. Board: https://caesura.mages.city
+reads both gates from the chain in the browser.
 
 ## Do X, see Y
 
@@ -49,11 +50,11 @@ node tools/roots.mjs bundles
 ```
 
 The sealed testnet rounds live in `bundles/` as they are run during the hackathon window, and
-the board shows the same proposals read from the gate. For any of them:
+the board shows the same proposals read from the gates. For any of them:
 
 ```bash
 node tools/verify.mjs bundles/<round> --rpc testnet
-# the bundle re-derived AND its root read back from pause.caesura.testnet (list_roots) → PASS
+# the bundle re-derived AND its root read back from the gate it ran on (list_roots) → PASS
 
 python tools/verify_py.py bundles/<round> --kappa ../kappa-evidence-mage
 # a second verifier in a second language, after
@@ -108,7 +109,9 @@ assayer, so the assayer is always handed a bad proposal. Each such round carries
 leaf. `pairs/*.json` name the seat pairs (same-model pairs included), and `tools/board.mjs`
 folds the bundles into `site/board.json`: a front per pair (drained must be 0; held, and by
 whom; honest spends passed; cost of the pause from NEAR AI billing), an attack × pair matrix,
-and the gap curve. The board at https://caesura.mages.city shows what has landed.
+and the gap curve. Study rounds run on `gap.caesura.testnet` (`--env-file=.env.gap`, day cap 5 Ⓝ,
+`tasks/policy-study.json`), demonstration rounds on `pause.caesura.testnet`; the board at
+https://caesura.mages.city shows what has landed on each.
 
 ## Keys with weight
 
@@ -187,7 +190,7 @@ node tools/verify.mjs bundles/r-tee-1 --rpc testnet
 
 ```bash
 cd contract && cargo build --target wasm32-unknown-unknown --release && cd ..
-node tools/deploy.mjs --owner <you>.testnet --gate <name>.<you>.testnet --fund 5.5
+node tools/deploy.mjs --owner <you>.testnet --gate <name>.<you>.testnet --fund 5.5 [--policy tasks/policy.json] [--env .env.caesura]
 node tools/owner.mjs state --gate <name>.<you>.testnet
 ```
 
@@ -200,7 +203,7 @@ each key to its seat and nothing else. Add the gate to `site/gates.json` and the
 - Built at the NEAR Hackathon, 1–14 November 2026, by mages.city. A private prototype of the
   same design was sketched on 20–21 October 2026, after the hackathon announcement; its rounds
   and keys were discarded, and every bundle in `bundles/` and every root on
-  `pause.caesura.testnet` was minted inside the window.
+  `pause.caesura.testnet` and `gap.caesura.testnet` was minted inside the window.
 - Code and prose were written by Claude Code agents working under the agentprivacy dual-agent
   harness (https://github.com/mitchuski/agentprivacy-harness, Apache-2.0), directed and
   reviewed by Mitchell Travers. `lib/dcbor.mjs` is that harness's canonical-encoding module.

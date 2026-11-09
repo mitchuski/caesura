@@ -1,3 +1,4 @@
 [
-  { "id": "pause.caesura.testnet", "owner": "caesura.testnet", "label": "the first gate", "network": "testnet" }
+  { "id": "pause.caesura.testnet", "owner": "caesura.testnet", "label": "the first gate · demonstration rounds", "network": "testnet" },
+  { "id": "gap.caesura.testnet", "owner": "caesura.testnet", "label": "the second gate · the gap study", "network": "testnet" }
 ]

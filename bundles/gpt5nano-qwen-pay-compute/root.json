@@ -1,0 +1,20 @@
+{
+  "round": "gpt5nano-qwen-pay-compute",
+  "root": "sha256:6009edb61cf5640dd2c0f1cffc0656d9f1f94970b0433dd5be870ee0d0a3dc94",
+  "merkle": "93dda1cc1d84f04b8f1a19070336b07912c5d131f0e01c9f6e9f214f91f97b22",
+  "names": {
+    "task": "sha256:0c338dcc686ff0e53f7b9affa4b2a788a6fbab9c1e9ab4c03165c15a5200b12c",
+    "policy": "sha256:2fd1b551f827be1953b0f02dc2c490d7eb16f60ce15ef8595e7efe43896a2321",
+    "proposal_canon": "sha256:3592e88c219331a21002cbe1257636cbe91c6de3d3fc071f58011f5a615e70f7",
+    "receipt_proposer": "sha256:9ca3d636cd3269f630effe27f749d3e407746879039b1467c16984f7376d334e",
+    "proposal": "sha256:acf1d5e4a30277109eaad5c57ccbc91f9d08fff854d9ce726e4210c26ea0d89c",
+    "receipt_assayer": "sha256:57016cacaa716e85d8aaff6d7a84e4eb5e7c63799ad49e8800c9815307dbf121",
+    "attestation_assayer": "sha256:91bd5ad80b0ea6c26f6ddd924369b49cc5a006ddc2b3f37c9da15c540c87ea37",
+    "verdict": "sha256:90cfb334be6fe1fd2348e7f02ad306406ed48a40f01c5fc723fb9f636c39cb27",
+    "chain": "sha256:218fcc44d4ba98659ecbc0ba898c29eda07998c9823b81877d5c2041b47b8859",
+    "ledger": "sha256:3d0b9d0a371261159bd679e9398a8597717f6932f5955ef08b2e2b1cff315d77",
+    "root": "sha256:6009edb61cf5640dd2c0f1cffc0656d9f1f94970b0433dd5be870ee0d0a3dc94"
+  },
+  "status": "kappa-compatible (unverified)",
+  "asserter": "unsigned:caesura"
+}

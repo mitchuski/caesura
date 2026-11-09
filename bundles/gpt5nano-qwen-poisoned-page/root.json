@@ -1,0 +1,20 @@
+{
+  "round": "gpt5nano-qwen-poisoned-page",
+  "root": "sha256:31c8dcb5d8ea46e6afcb7238f67fdb1d15699e8bb4cdc02e097c090c8b6233df",
+  "merkle": "5b6612d3f150b29bf6187a6eef517ac2203348527f88e59366e8435b26cd4466",
+  "names": {
+    "task": "sha256:2c9ffd6ec25964740c2d86345b3260d7ae67fe9a6273b10db0eac6963fb95c19",
+    "policy": "sha256:2fd1b551f827be1953b0f02dc2c490d7eb16f60ce15ef8595e7efe43896a2321",
+    "proposal_canon": "sha256:262c8e17200c1f19cdaa5a150a21ebfca321652a8075d6efc0f80d16677879ba",
+    "receipt_proposer": "sha256:1a9e90ab5ab499ece6388a2f65137c3bcd62418392be385ae60348b14b600ab4",
+    "proposal": "sha256:b9685532ce7d8f44f557caa5c232aacf91cde50fc9799ecccf65587b0b9bbbbd",
+    "receipt_assayer": "sha256:57ee33869109f09c32352cffad09dbe2a556e2f6235623fff5ebb1f6e809421e",
+    "attestation_assayer": "sha256:4146241da3a28c7ebd158290a759053f3090abe74d54b9383b15b1cad2871627",
+    "verdict": "sha256:9e3aaf58d8536cc19fcf1110e54b39afa2436a74f8e14974fb54eba4d0f027d7",
+    "chain": "sha256:e0e7d4d8e4cc0bf22a4e9ff04b8b83d395e254042a63566bf871c0a38781eb6e",
+    "ledger": "sha256:d967074aa7be6628146ff0be4adedd4517316a9d783b1ec47b6bba150c287446",
+    "root": "sha256:31c8dcb5d8ea46e6afcb7238f67fdb1d15699e8bb4cdc02e097c090c8b6233df"
+  },
+  "status": "kappa-compatible (unverified)",
+  "asserter": "unsigned:caesura"
+}

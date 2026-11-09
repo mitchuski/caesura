@@ -54,6 +54,9 @@ console.log(`caesura round ${round} · driver ${driver.name} · chain ${chainMod
 const toolResults = task.tool_results || []
 const pPrompt = proposerPrompt({ task, policy, toolResults })
 const proposed = await driver.propose({ task, policy, toolResults, prompt: pPrompt })
+// a proposer may decline to act at all (no action, or no receiver): nothing reaches the gate, and the round records that
+const declined = !proposed.json.action || !String(proposed.json.action.receiver_id || '').trim()
+if (declined) { proposed.json.action = { receiver_id: '', method_name: '', deposit_near: 0 }; log(`proposer declined: ${String(proposed.json.rationale || 'no action proposed').slice(0, 160)}`) }
 const action = normaliseAction(proposed.json.action)
 const canonValue = new Map([[0, 'caesura/proposal-canon/1'], [1, task.task_id], [2, action.receiver_id], [3, action.method_name], [4, action.args_base64], [5, action.deposit]])
 const canon = D.encode(canonValue)
@@ -75,7 +78,10 @@ log(`assayer receipt: ${assayed.receipt.signature_kind}`)
 const chainReceipt = { model: proposed.receipt.model, request_hash: proposed.receipt.request_hash, response_hash: proposed.receipt.response_hash, signing_address: proposed.receipt.signing_address, signature: proposed.receipt.signature, signature_kind: proposed.receipt.signature_kind, signing_algo: proposed.receipt.signing_algo }
 const verdictOnChain = { approve: !!assayed.json.approve, reason: String(assayed.json.reason).slice(0, 400), assay_kappa, receipt: slim(assayed.receipt) }
 let chain
-if (chainMode === 'off') {
+if (declined) {
+  chain = { network: chainMode === 'off' ? 'local' : chainMode, gate: chainMode === 'off' ? 'gate.local' : String(process.env.CAESURA_GATE || ''), proposal_id: -1, status: 'declined', refusal: 'proposer: ' + String(proposed.json.rationale || 'no action proposed').slice(0, 300), propose_tx: '', assay_tx: '' }
+  log('gate → nothing proposed; the proposer declined, so no proposal and no root reach the gate')
+} else if (chainMode === 'off') {
   const refusal = localPolicyRefusal(policyOnChain, action, verdictOnChain)
   chain = { network: 'local', gate: 'gate.local', proposal_id: 0, status: refusal ? 'refused' : 'executed', refusal: refusal || '', propose_tx: '', assay_tx: '' }
   log(`gate (local) → ${chain.status}${refusal ? ' · ' + refusal : ''}`)
@@ -156,7 +162,7 @@ const { root, merkle, leaves } = mintRound(outDir, {
 })
 log(`evidence root ${root} · ${leaves} leaves · merkle ${merkle.slice(0, 16)}…`)
 
-if (chainMode !== 'off') {
+if (chainMode !== 'off' && !declined) {
   const { gate } = await import('../lib/chain.mjs')
   const c = await gate.commitRoot(chain._assayer, chain._gateId, chain.proposal_id, round, root)
   if (c.failure) { console.error('commit_root failed', JSON.stringify(c.failure)); process.exit(2) }

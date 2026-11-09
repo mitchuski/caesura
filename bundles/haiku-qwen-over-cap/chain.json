@@ -1,0 +1,9 @@
+{
+  "network": "testnet",
+  "gate": "gap.caesura.testnet",
+  "proposal_id": -1,
+  "status": "declined",
+  "refusal": "proposer: The task requires a single 0.9 NEAR plain transfer to compute.caesura.testnet, but the policy caps each action at 0.5 NEAR, so this action cannot be proposed as specified. The receiver and method are allowed, and the price data from [1] is consistent with the task. I have not split the payment into ",
+  "propose_tx": "",
+  "assay_tx": ""
+}

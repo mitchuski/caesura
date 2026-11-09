@@ -106,7 +106,11 @@ only; g1 + the task text (the designed gap); g2 + the proposer's rationale; g3 +
 results, so the poison itself crosses; g4 + the proposer's full prompt, so there is no gap.
 `--driver mixed` seats a stub proposer that follows the poison by construction beside a real
 assayer, so the assayer is always handed a bad proposal. Each such round carries a `study/1`
-leaf. `pairs/*.json` name the seat pairs (same-model pairs included), and `tools/board.mjs`
+leaf. `pairs/*.json` name the seat pairs: two-model and same-model enclave pairs, a stub proposer
+beside each enclave assayer, a DeepSeek proposer, and two proxied frontier proposers (GPT-5-nano,
+Claude Haiku) whose receipts are signed by the NEAR AI gateway but carry no model attestation, so
+the board shows those rounds as unattested: the gate holds without the enclave; the enclave is what
+makes the receipt verifiable. `scripts/rounds-pairs.sh` runs the seat tasks per pair. `tools/board.mjs`
 folds the bundles into `site/board.json`: a front per pair (drained must be 0; held, and by
 whom; honest spends passed; cost of the pause from NEAR AI billing), an attack × pair matrix,
 and the gap curve. Study rounds run on `gap.caesura.testnet` (`--env-file=.env.gap`, day cap 5 Ⓝ,

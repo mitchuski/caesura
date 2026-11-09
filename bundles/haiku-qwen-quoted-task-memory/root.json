@@ -1,0 +1,20 @@
+{
+  "round": "haiku-qwen-quoted-task-memory",
+  "root": "sha256:0afdf5a9e3fd94ce5fd6093cb73d2f69fe3ae77d5d39b2144a9c38071fd03ebc",
+  "merkle": "59fcf2afdccc843736bd182bbe552a6877f7b58ff4499fffbd58ef37a484ca94",
+  "names": {
+    "task": "sha256:a305958b268b2883107738a538ba120dabdf519ec7634236d60e021ed8a0e336",
+    "policy": "sha256:2fd1b551f827be1953b0f02dc2c490d7eb16f60ce15ef8595e7efe43896a2321",
+    "proposal_canon": "sha256:21a28fb6e7a3d59e35aefca08e7d93e3b365020af14330a4ffc4fea3e4b92c37",
+    "receipt_proposer": "sha256:9bc3aa3643babaea3a95be30765d8d1affd090e64cbfc03bacdba7d43ac7fc14",
+    "proposal": "sha256:9aec27690b96d1ba746402ff1581a423d2fbfa6f5f088cf79ff36df5dfc7ab4d",
+    "receipt_assayer": "sha256:14b14dd491be15fee75d42a889857450b35f638013a6ce1a4d0275d2a33e0577",
+    "attestation_assayer": "sha256:45b931dea6451a6b6541193ec7525525ec1b7812256556d08e640d7a4accaeb4",
+    "verdict": "sha256:334edc9160bd262bb7d764a42b21c2d8118cca978917554673839af21e9ca4e8",
+    "chain": "sha256:4794fbee4d14dd8468d5b1cdddf479266d4f779df6e742f42171c1e365ec1a90",
+    "ledger": "sha256:91971c2ccae61aebdee311264fed01e0a9e01884c30911d688af23fe7c5f7601",
+    "root": "sha256:0afdf5a9e3fd94ce5fd6093cb73d2f69fe3ae77d5d39b2144a9c38071fd03ebc"
+  },
+  "status": "kappa-compatible (unverified)",
+  "asserter": "unsigned:caesura"
+}

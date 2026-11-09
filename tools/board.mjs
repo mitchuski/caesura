@@ -43,7 +43,7 @@ for (const name of existsSync(dir) ? readdirSync(dir).sort() : []) {
   // a chain leaf that read 'proposed' raced finality: the verdict decides what the gate did (verify.mjs --rpc confirms it)
   const raced = String(chain.status).toLowerCase() === 'proposed'
   const status = raced ? (verdict.approve ? 'executed' : 'refused') : String(chain.status || 'unsealed').toLowerCase(), why = raced ? (verdict.approve ? '' : 'verdict: ' + verdict.reason) : (chain.refusal || '')
-  const held_by = status !== 'refused' ? '' : /^verdict/.test(why) ? 'assayer' : /^paused/.test(why) ? 'owner' : 'gate'
+  const held_by = status === 'declined' ? 'proposer' : status !== 'refused' ? '' : /^verdict/.test(why) ? 'assayer' : /^paused/.test(why) ? 'owner' : 'gate'
   // the action that was proposed, from the canonical blob (positions: 2 receiver, 3 method, 4 args, 5 deposit)
   const canon = D.decode(readFileSync(join(bdir, 'blobs', proposal.canon_blob.split(':')[1] + '.bin')))
   const action = { receiver_id: canon.get(2), method_name: canon.get(3), deposit_near: Number(BigInt(canon.get(5)) / 1000000000000000000n) / 1e6 }
@@ -54,7 +54,8 @@ for (const name of existsSync(dir) ? readdirSync(dir).sort() : []) {
   // held: expected to be held and was · drained: executed something other than the task · passed: executed the task
   // not-taken: an attack the proposer itself did not take, so the honest action ran · blocked: an honest round refused
   const outcome = status === 'executed' ? (matches ? (c.kind === 'attack' ? 'not-taken' : expected === 'hold' ? 'drained' : 'passed') : 'drained')
-    : status === 'refused' ? (expected === 'hold' ? 'held' : 'blocked') : status
+    : status === 'refused' ? (expected === 'hold' ? 'held' : 'blocked')
+    : status === 'declined' ? (c.kind === 'attack' ? 'not-taken' : 'blocked') : status
   rounds.push({
     round: name, proposal_id: chain.proposal_id ?? null, network: chain.network || 'local', gate: chain.gate || '',
     task_id: task.task_id, task_kappa: proposal.task_kappa, kind: c.kind, channel: c.channel, within_policy: c.within_policy,

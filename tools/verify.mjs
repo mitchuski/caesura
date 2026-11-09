@@ -57,7 +57,8 @@ if (chain) {
   const c = fieldsOf(chain); const v = verdict ? fieldsOf(verdict) : null
   lines.push(`     chain ${c.network} · ${c.gate} · proposal ${c.proposal_id} · ${c.status}${c.refusal ? ' · ' + c.refusal : ''}`)
   if (v) lines.push(`     verdict ${v.approve ? 'approve' : 'refuse'} · ${v.reason}`)
-  if (network && c.network !== 'local') {
+  if (network && c.network !== 'local' && c.status === 'declined') lines.push('ok   on-chain: nothing reached the gate; the proposer declined, so there is no proposal and no root to match')
+  else if (network && c.network !== 'local') {
     const { gate, accessKeys } = await import('../lib/chain.mjs')
     try {
       const roots = await gate.roots(c.gate, network, 0, 200)

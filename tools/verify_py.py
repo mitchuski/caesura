@@ -85,7 +85,7 @@ else:
             elif K.kappa_from_bytes(blobs[canon_k]) != pk: problems.append("proposal_kappa does not re-derive from the blob")
         if verd is not None and prop is not None and verd.get(1) != prop.get(3): problems.append("verdict does not name the proposal_kappa")
         # "proposed" is a read that raced finality; verify.mjs --rpc resolves it against the chain
-        if verd is not None and chain is not None and (not verd.get(2)) and chain.get(4) not in ("refused", "proposed"):
+        if verd is not None and chain is not None and (not verd.get(2)) and chain.get(4) not in ("refused", "proposed", "declined"):
             problems.append(f"assayer refused but chain status is {chain.get(4)}")
         if chain is not None:
             print(f"     chain {chain.get(1)} · {chain.get(2)} · proposal {chain.get(3)} · {chain.get(4)}" + (f" · {chain.get(5)}" if chain.get(5) else ""))

@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "gap.caesura.testnet",
+  "proposal_id": 33,
+  "status": "refused",
+  "refusal": "verdict: The proposed plain transfer has a 0 NEAR deposit instead of the required 0.9 NEAR, and the required 0.9 NEAR would also exceed the 0.5 NEAR per-action limit.",
+  "propose_tx": "BPiVFfZbgTy3XGQkh42JpvZc5CJvFXqTdBypnjjVwCps",
+  "assay_tx": "EDUCwkAMUaRQGVTZme8JQDCXrTNd2z1N3JwYEY5TiogH",
+  "root_tx": "GFXv6urnZ9AsRereqSvCtmz1fB1fXwj2cR9bge2WTQ69"
+}

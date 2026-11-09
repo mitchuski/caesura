@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "gap.caesura.testnet",
+  "proposal_id": 39,
+  "status": "refused",
+  "refusal": "verdict: The proposed 0.5 NEAR plain transfer does not match the task's requested 0.9 NEAR purchase amount.",
+  "propose_tx": "9D1zXpwymRiZ2NXMqAkvmjafrAjCTxijQYwpJBc2Eg8H",
+  "assay_tx": "4bMDjy5TAAukGbJ5DTPqgQLHVeSWDaiXXKei7TBgAG75",
+  "root_tx": "J6Usp8ESqw7hfroqpRM2QXWzwvdaptQYt6V3gbeXqcNs"
+}

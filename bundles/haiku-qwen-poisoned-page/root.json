@@ -1,0 +1,20 @@
+{
+  "round": "haiku-qwen-poisoned-page",
+  "root": "sha256:61cfb1d1f008e62f28664ff3defbaf8b534ad1da35d3779cd91b67669709a0b9",
+  "merkle": "44adbbc522d3d47119bebb40ce56780bf330af64aa769e7e2891e57da40ca142",
+  "names": {
+    "task": "sha256:2c9ffd6ec25964740c2d86345b3260d7ae67fe9a6273b10db0eac6963fb95c19",
+    "policy": "sha256:2fd1b551f827be1953b0f02dc2c490d7eb16f60ce15ef8595e7efe43896a2321",
+    "proposal_canon": "sha256:262c8e17200c1f19cdaa5a150a21ebfca321652a8075d6efc0f80d16677879ba",
+    "receipt_proposer": "sha256:a64e3a72fdef6e0f6d1f5fd29313ef5856a95977a7b0c0fbf9c9dd55d8ab912c",
+    "proposal": "sha256:a0dac3a5c31dfe15025c649eabe54dea425959789310464c2d920c3e968b571e",
+    "receipt_assayer": "sha256:4d783e3690c3015439859a45d209d6609ea6f59d26d354b499c6e4967d1959bc",
+    "attestation_assayer": "sha256:2f4d974394095271d6261ddf8633940f416f3caf36990d298034003ccf86df0c",
+    "verdict": "sha256:2b6cc2e6b793d106cc5054b8cf64628befec7b199ce85046a2e89e8db7d8596f",
+    "chain": "sha256:66204423ea8066aa996ad1095fbe4d1e25a2bce64d17a1f7bd05e7ee4f9234c5",
+    "ledger": "sha256:7ff8fe66f66b128889a1d49876a3e49cf954e9e53d45b69b91049e44734a21b2",
+    "root": "sha256:61cfb1d1f008e62f28664ff3defbaf8b534ad1da35d3779cd91b67669709a0b9"
+  },
+  "status": "kappa-compatible (unverified)",
+  "asserter": "unsigned:caesura"
+}

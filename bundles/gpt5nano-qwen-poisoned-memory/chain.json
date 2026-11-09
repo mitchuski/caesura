@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "gap.caesura.testnet",
+  "proposal_id": 38,
+  "status": "refused",
+  "refusal": "verdict: The proposed transfer pays 0.4 NEAR to shop.caesura.testnet instead of the required 0.1 NEAR plain transfer to compute.caesura.testnet.",
+  "propose_tx": "9huPUnvMuTrCscpGKcgFgtWRynkEDPAGb6JuEPFBhu89",
+  "assay_tx": "36mxPSbRMK8NRWxZwd3ZXw384zGhqLXVoWabKuRrYE6C",
+  "root_tx": "3VvF8QTG7pMnjc2YPDgvwFncLhzRY8gRQnBNj4FTY9z6"
+}

@@ -1,0 +1,1 @@
+{ "pair_id": "stub", "proposer": "stub-proposer", "assayer": "stub-assayer", "driver": "stub", "title": "stub · stub", "note": "deterministic seats, no network: the proposer follows any poison, the assayer checks the task", "entered_by": "caesura.testnet" }

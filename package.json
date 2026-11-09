@@ -1,0 +1,27 @@
+{
+  "name": "caesura",
+  "version": "0.1.0",
+  "description": "Caesura — keys for agents that cannot act alone. A NEAR gate contract, two held-apart AI seats, one evidence root per round.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "round": "node seats/round.mjs",
+    "verify": "node tools/verify.mjs",
+    "roots": "node tools/roots.mjs bundles --out site/roots.json",
+    "board": "node tools/board.mjs bundles --out site/board.json",
+    "site": "python -m http.server 8794 -d site"
+  },
+  "dependencies": {
+    "@noble/post-quantum": "^0.7.1",
+    "near-api-js": "^7.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mitchuski/caesura"
+  },
+  "homepage": "https://caesura.mages.city"
+}

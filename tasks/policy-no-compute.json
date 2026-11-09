@@ -1,0 +1,7 @@
+{
+  "max_per_action_near": 0.5,
+  "max_per_day_near": 2,
+  "cooldown_ms": 1000,
+  "receivers": ["shop.caesura.testnet"],
+  "methods": ["", "buy_credits"]
+}

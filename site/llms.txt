@@ -1,0 +1,75 @@
+# Caesura
+
+> Keys for agents that cannot act alone. A NEAR contract holds the only keys; one AI seat
+> proposes inside a private enclave, a second held-apart seat checks, and an action executes
+> only when both agree and the policy passes. Every decision, including every refusal, is
+> sealed under one hash the chain carries and anyone can re-derive offline.
+
+A standalone build on NEAR, live on testnet. Built by mages.city at the NEAR Hackathon, 1–14 November 2026.
+Repository: https://github.com/mitchuski/caesura (Apache-2.0). Start with its README: the path is "do X, see Y".
+
+## The name and the mark
+
+- A caesura is the break inside a line of verse; here it is the pause between proposing and acting.
+- The two seats are the City's pair: the mage (soulbae) proposes, the sword (soulbis) checks.
+  In the City's hand: ⚔️ ⊥ ⿻ ⊥ 🧙 — sword, held apart, the pause where the two overlap, held apart, mage.
+- The mark is two bars that overlap: mage coral, sword cyan, the overlap violet. The æ in the
+  name is a ligature, two letters cast as one glyph and each still itself: that pause set in the name.
+
+## Mechanism
+
+- Gate: a Rust contract (near-sdk-rs) on a sub-account with no full-access key. Policy state
+  (per-action cap, per-day cap, allowed receivers, cooldown, pause). Methods: propose, assay,
+  commit_root; owner-only set_policy, pause, rotate_seat_key.
+- Seats: two function-call access keys on the gate's account, each scoped to one method.
+  Proposer = private inference on NEAR AI Cloud (TEE-signed response + attestation).
+  Assayer = a different model that receives only the canonical proposal bytes.
+- Evidence: one content-addressed bundle per round (proposal, assay, enclave receipts,
+  policy snapshot, transaction id) under a root the gate commits. An offline verifier
+  re-derives every address, checks the enclave signatures against the attestation, and
+  matches the root to the chain.
+
+## Path (do X, see Y)
+
+1. Deploy the gate; set caps; add one scoped key per seat.
+2. Agent pays for compute: propose → assay approves → executed → root committed → verifier green.
+3. Poisoned tool result: proposer drafts a drain; assayer refuses; chain records `refused`; the refusal is a leaf.
+4. Owner pauses from their own key; the pause is a leaf.
+5. `node verify.mjs bundles/<round>` re-derives everything.
+
+## The board
+
+https://caesura.mages.city reads every gate listed in gates.json live from NEAR testnet
+(get_state, list_proposals, list_roots) and shows rounds, refusals, attacks held and roots.
+First gate: pause.caesura.testnet (owner caesura.testnet). Every round on it was run inside the hackathon window. Deploy your own with tools/deploy.mjs,
+run a poisoned round, verify, then add your gate id to gates.json to join the board.
+
+## Links
+
+- Site: https://caesura.mages.city
+- Repository: https://github.com/mitchuski/caesura (public, Apache-2.0)
+- Built by mages.city for NEAR.
+
+## The gap, measured (autoresearch board)
+
+Every round names the attack it ran (corpus/index.json; the task object's address is in the
+proposal) and the seat pair that ran it (pairs/). board.json folds rounds into a front per
+pair (drained must be 0; held, not taken, honest passed, cost of the pause), an attack x pair
+matrix, and studies. First study: the gap ladder. --gap N sets what crosses to the second seat:
+g0 policy + proposal only; g1 + task (the designed gap); g2 + rationale; g3 + tool results;
+g4 + the proposer's full prompt. Points on the curve are rounds on the gate; the board folds
+them as they land. Contribute an
+attack, a seat pair, a policy, or a point on the curve; rounds land as roots on your gate.
+
+## Keys with weight (hybrid ed25519 + ML-DSA-65 + SLH-DSA; the ceremony)
+
+A key can sign twice: the ed25519 function-call key the gate holds, and a post-quantum key
+beside it (composite suites mldsa65-ed25519 and slhdsa-sha2-128s-ed25519: both halves must
+verify over one domain-separated, dual-hash pre-hashed message). Three rungs by data
+(key-policy leaf): proposer ed25519; assayer ML-DSA-65 + ed25519 (the releasing seat); owner
+SLH-DSA-SHA2-128s + ed25519 (hash-based, installs the seat keys, signs rarely). The ceremony
+leaf, signed by the owner, names the key policy and the key commitments; a transfer names the
+ceremony and keys it leaves and is countersigned by each key it leaves. The verifier walks the
+chain of ceremonies and, with --rpc, checks every ed25519 half against the gate and its owner.
+The gate verifies the ed25519 half today; in-contract pq verification is the v2 gate (probed:
+ML-DSA-65 31 TGas, SLH-DSA-SHA2-128s 18 TGas).

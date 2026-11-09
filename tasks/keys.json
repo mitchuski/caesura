@@ -1,0 +1,5 @@
+{
+  "note": "the key policy: which signature suite each seat must carry. The assayer is the releasing seat, so it carries the heavier key; the proposer stays classical. Change a suite here and rotate the seat's key (tools/keys.mjs gen): the verifier reads the suite from the bundle, nothing in the code changes.",
+  "proposer": "ed25519",
+  "assayer": "mldsa65-ed25519"
+}

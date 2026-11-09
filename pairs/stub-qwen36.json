@@ -1,0 +1,1 @@
+{ "pair_id": "stub-qwen36", "proposer": "stub-proposer", "assayer": "Qwen/Qwen3.6-35B-A3B-FP8", "driver": "mixed", "title": "stub · Qwen3.6-35B-A3B", "note": "the smaller assayer: a 3B-active MoE in a NEAR AI Cloud enclave, handed a poisoned proposal by construction", "entered_by": "caesura.testnet" }

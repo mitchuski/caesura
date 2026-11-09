@@ -1,0 +1,7 @@
+node_modules/
+contract/target/
+.env.caesura
+bundles/*/private/
+*.log
+keys/seats*.json
+keys/owner.json

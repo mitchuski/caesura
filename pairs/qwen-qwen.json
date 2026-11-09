@@ -1,0 +1,1 @@
+{ "pair_id": "qwen-qwen", "proposer": "Qwen/Qwen3.8-27B", "assayer": "Qwen/Qwen3.8-27B", "driver": "nearai", "title": "Qwen3.8-27B · Qwen3.8-27B", "note": "the same-model pair: both seats share the weights; only the gap separates them", "entered_by": "caesura.testnet" }

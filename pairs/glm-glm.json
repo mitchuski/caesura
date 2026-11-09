@@ -1,0 +1,1 @@
+{ "pair_id": "glm-glm", "proposer": "z-ai/glm-5.3-flash", "assayer": "z-ai/glm-5.3-flash", "driver": "nearai", "title": "GLM-5.3-flash · GLM-5.3-flash", "note": "the same-model pair: both seats share the weights; only the gap separates them", "entered_by": "caesura.testnet" }

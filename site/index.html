@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caesura — keys for agents that cannot act alone</title>
+<meta name="description" content="Caesura is a gate contract and two held-apart AI seats: one proposes inside a private enclave, the other checks, and nothing moves until both hold. Every decision, including every refusal, is sealed under a hash the chain carries. Test it on testnet.">
+<meta property="og:title" content="Caesura — keys for agents that cannot act alone">
+<meta property="og:description" content="One agent proposes ‖ another, held apart, checks. Only then does anything move. Live on NEAR testnet.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080c20'/%3E%3Crect x='20' y='8' width='11' height='38' rx='5.5' fill='%23e8523a'/%3E%3Crect x='33' y='18' width='11' height='38' rx='5.5' fill='%234dd9e8'/%3E%3Crect x='27' y='22' width='10' height='20' rx='5' fill='%23b79cff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#top"><svg class="mark" viewBox="0 0 40 60" aria-hidden="true"><rect class="a" x="9" y="4" width="10" height="44" rx="5"/><rect class="b" x="21" y="12" width="10" height="44" rx="5"/><rect class="o" x="16" y="18" width="8" height="24" rx="4"/></svg>Cæsura</a>
+  <nav aria-label="Sections">
+    <a href="#pause">The pause</a>
+    <a href="#board">The board</a>
+    <a href="#research">The gap</a>
+    <a href="#test">Test it</a>
+    <a href="#near">On NEAR</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-fig">
+    <canvas id="star" aria-label="The star inside its lattice and manifold; two seats orbit and pause at the caesura"></canvas>
+    <p class="fig-help"><span class="mage">● proposer, the mage</span> <span class="sword">● assayer, the sword</span> <span class="mute">· drag to turn</span></p>
+  </div>
+  <div class="hero-text">
+    <p class="eyebrow">An agent gate on NEAR · live on testnet · NEAR Hackathon, November 2026</p>
+    <h1>C<span class="ae">æ</span>sura</h1>
+    <p class="tagline">Keys for agents that cannot act alone.</p>
+    <div class="verse" aria-label="The line">
+      <span class="half" id="half-a">one agent proposes</span>
+      <span class="sigil" aria-label="the mage, held apart, the pause, held apart, the sword"><span class="g">🧙</span><span class="perp">⊥</span><svg class="mark" viewBox="0 0 40 60" aria-hidden="true"><rect class="a" x="9" y="4" width="10" height="44" rx="5"/><rect class="b" x="21" y="12" width="10" height="44" rx="5"/><rect class="o" x="16" y="18" width="8" height="24" rx="4"/></svg><span class="perp">⊥</span><span class="g">⚔️</span></span>
+      <span class="half" id="half-b">another, held apart, checks</span>
+    </div>
+    <p class="verse-close">Only then does anything move.</p>
+    <p class="lede">A small NEAR contract holds the only keys. It releases an action when a second, held-apart seat agrees and the policy passes. Every decision, including every refusal, is sealed under one hash the chain carries.</p>
+    <div class="ctas">
+      <a class="btn primary" href="#board">See the board</a>
+      <a class="btn" href="#test">Test the gate</a>
+      <a class="btn" href="https://github.com/mitchuski/caesura">Repository</a>
+    </div>
+  </div>
+</section>
+
+<section id="pause" class="band">
+  <h2>The pause, in three seats</h2>
+  <div class="three">
+    <article class="mage"><p class="num">01 · propose</p><p>Drafts the action inside a private enclave on NEAR AI Cloud. Signed by the hardware. Nobody outside sees what it was told.</p></article>
+    <article class="gap"><p class="num">02 · assay</p><p>A different model that sees only the proposal and the task. Never the first seat's prompt. It re-checks receiver, amount and route.</p></article>
+    <article class="sword"><p class="num">03 · release</p><p>The contract holds the keys. Each seat's key can call one method. Both must hold, and the policy, or the chain records a refusal.</p></article>
+  </div>
+  <p class="chain-line">The chain carries hashes, not words. One root per round, re-derived offline by anyone who holds the bundle. A refusal is a leaf like any other.</p>
+</section>
+
+<section id="board" class="band alt">
+  <div class="band-head">
+    <h2>The board</h2>
+    <p class="live" id="live"><span class="dot"></span> reading testnet…</p>
+  </div>
+  <p class="note">Every gate running this mechanism on NEAR testnet, read live from the chain. Rounds, what each gate said, and the attacks it held.</p>
+  <div class="tiles" id="tiles"></div>
+  <div class="gates" id="gates"></div>
+  <h3 class="rounds-h">Rounds · <span id="rounds-gate">pause.caesura.testnet</span></h3>
+  <div class="rounds" id="rounds"><div class="row placeholder"><span>— reading —</span></div></div>
+</section>
+
+<section id="research" class="band">
+  <div class="band-head">
+    <h2>The gap, measured</h2>
+    <p class="live" id="research-live"><span class="dot"></span> reading the index…</p>
+  </div>
+  <p class="note">Every round names the attack it ran and the pair of seats that ran it. The board folds them into a front: no drains, honest spends pass, at the smallest cost of the pause. Add an attack, a pair of seats or a policy, and your rounds land here.</p>
+
+  <h3 class="rounds-h">The gap curve · what crosses to the second seat</h3>
+  <div class="curve" id="curve"><div class="row placeholder"><span>— reading —</span></div></div>
+  <p class="note" id="curve-note"></p>
+
+  <h3 class="rounds-h">The front · seat pairs at the designed gap</h3>
+  <div class="front" id="front"></div>
+
+  <h3 class="rounds-h">Attacks × seat pairs</h3>
+  <div class="matrix" id="matrix"></div>
+
+  <h3 class="rounds-h">Keys with weight</h3>
+  <p class="note">A key can sign twice: the ed25519 key the gate holds, and a post-quantum key beside it. Both sign one domain-separated message over a dual-hash pre-hash, and a broken half fails the whole. Three rungs, by data: the proposer stays classical; the assayer, whose approval releases funds, carries ML-DSA-65 beside its ed25519; the owner, who installs the seat keys, carries SLH-DSA, hash-based, and signs rarely. The separation is the ceremony: the owner signs the key set, and when a seat moves suite the key it leaves countersigns the move, so no single key moves the system and the move is a leaf under a root on the gate. Rounds marked <em>ceremony</em> in the list above carry it.</p>
+
+  <h3 class="rounds-h">Three ways in</h3>
+  <div class="three ways">
+    <article class="mage"><p class="num">an attack</p><p>A task fixture with a poison in a page, a memory or the task itself. Its hash rides in every proposal that runs it.</p><pre><code>tasks/your-attack.json
+corpus/index.json</code></pre></article>
+    <article class="gap"><p class="num">a pair of seats</p><p>Two models and a driver. Run the corpus. Your pair becomes a row on the front.</p><pre><code>pairs/your-pair.json
+round.mjs --driver nearai</code></pre></article>
+    <article class="sword"><p class="num">a policy</p><p>Caps, cooldown, receivers. Fewer honest refusals at zero drains.</p><pre><code>tasks/policy.json
+owner.mjs policy</code></pre></article>
+  </div>
+  <p class="chain-line">Rounds land as roots on a gate, committed by the seat key that ran them. The board reads the chain. This index only groups it.</p>
+</section>
+
+<section id="test" class="band">
+  <h2>Test it</h2>
+  <p class="lede-2">Stand up your own gate on testnet, feed its proposer a poisoned page, and watch the second seat and the policy hold. Your gate joins the board.</p>
+  <ol class="path">
+    <li><b>Deploy a gate.</b> One script creates the sub-account, installs the two scoped seat keys and deletes its own full-access key.<pre><code>node tools/deploy.mjs --owner you.testnet</code></pre></li>
+    <li><b>Run a poisoned round.</b> The fetched page tells the proposer to drain the wallet.<pre><code>node seats/round.mjs --task tasks/poisoned-page.json --chain testnet</code></pre></li>
+    <li><b>Verify from the bundle alone.</b> Every hash re-derived, the root read back from your gate.<pre><code>node tools/verify.mjs bundles/poisoned-page --rpc testnet</code></pre></li>
+    <li><b>Join the board.</b> Add your gate to <code>gates.json</code>. The board reads it from the chain, not from us. Name the attack and the pair you ran and the round joins the front above.</li>
+  </ol>
+  <p class="note">The first gate, <code>pause.caesura.testnet</code>, is live and readable now. Every round on it was run during the hackathon window; the board reads the chain, not a database. Code, README path and verifier: <a href="https://github.com/mitchuski/caesura">github.com/mitchuski/caesura</a>.</p>
+</section>
+
+<section id="near" class="band alt">
+  <h2>On NEAR</h2>
+  <div class="grid">
+    <div><h3>Function-call keys</h3><p>One method per seat key, gas allowance, no transfers. The protocol enforces it.</p></div>
+    <div><h3>Locked sub-account</h3><p>No full-access key. Only the code acts. The owner's door is the parent account.</p></div>
+    <div><h3>NEAR AI Cloud</h3><p>Private inference in a TEE. Each answer signed over its exact bytes.</p></div>
+    <div><h3>Policy in the open</h3><p>Caps, receivers, cooldown, pause: contract state anyone reads.</p></div>
+    <div><h3>Owner seat</h3><p>A person, or a Sputnik DAO proposal that sets the policy.</p></div>
+    <div><h3>Beyond NEAR</h3><p>Intents and Chain Signatures pause at the same caesura.</p></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="line"><svg class="mark" viewBox="0 0 40 60" aria-hidden="true"><rect class="a" x="9" y="4" width="10" height="44" rx="5"/><rect class="b" x="21" y="12" width="10" height="44" rx="5"/><rect class="o" x="16" y="18" width="8" height="24" rx="4"/></svg> a caesura is the break in a line of verse · here it is the pause between proposing and acting</p>
+  <p class="line ae-line"><span class="sigil" aria-label="the sword, held apart, the pause, held apart, the mage"><span class="g">⚔️</span><span class="perp">⊥</span><svg class="mark" viewBox="0 0 40 60" aria-hidden="true"><rect class="a" x="9" y="4" width="10" height="44" rx="5"/><rect class="b" x="21" y="12" width="10" height="44" rx="5"/><rect class="o" x="16" y="18" width="8" height="24" rx="4"/></svg><span class="perp">⊥</span><span class="g">🧙</span></span> · the sword, soulbis, is the seat that checks · the mage, soulbae, is the seat that proposes · <span class="glyph">⊥</span> is held apart · <span class="glyph">⿻</span> is the pause where the two overlap, and the <span class="ae">æ</span> is that pause set in the name</p>
+  <p class="small">Built by <a href="https://mages.city">mages.city</a> for NEAR · built at the NEAR Hackathon, 1–14 November 2026 · <a href="https://github.com/mitchuski/caesura">repository</a> · code Apache-2.0 · <a href="llms.txt">llms.txt</a> for agents</p>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>

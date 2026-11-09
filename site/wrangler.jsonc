@@ -1,0 +1,10 @@
+{
+  // Cloudflare Workers static-assets deploy for caesura.mages.city (deploy = Mitch).
+  //   npx wrangler deploy
+  "name": "caesura",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "./", "not_found_handling": "404-page" },
+  "routes": [
+    { "pattern": "caesura.mages.city", "custom_domain": true }
+  ]
+}

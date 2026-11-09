@@ -1,0 +1,1 @@
+{ "pair_id": "glm-qwen", "proposer": "z-ai/glm-5.3-flash", "assayer": "Qwen/Qwen3.8-27B", "driver": "nearai", "title": "GLM-5.3-flash · Qwen3.8-27B", "note": "two different models in NEAR AI Cloud enclaves, both receipts attested", "entered_by": "caesura.testnet" }

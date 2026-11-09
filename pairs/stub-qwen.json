@@ -1,0 +1,1 @@
+{ "pair_id": "stub-qwen", "proposer": "stub-proposer", "assayer": "Qwen/Qwen3.8-27B", "driver": "mixed", "title": "stub · Qwen3.8-27B", "note": "a proposer that is poisoned by construction, so the enclave assayer is always handed a bad proposal: the pair the gap study uses", "entered_by": "caesura.testnet" }

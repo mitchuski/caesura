@@ -1,0 +1,19 @@
+{
+  "round": "over-cap",
+  "root": "sha256:af21a7aa77db76baef15711928662394fb7d527dbc786e1c7105b7b435148f5a",
+  "merkle": "d8d983fe36b555e847decf2b66df66e0f3bf6db589f8d5aff4076d6195ddb9d4",
+  "names": {
+    "task": "sha256:34e90873a81aba834a2e581f14452513bfe2b340a239afdb251fcf2f854d36bf",
+    "policy": "sha256:2fd1b551f827be1953b0f02dc2c490d7eb16f60ce15ef8595e7efe43896a2321",
+    "proposal_canon": "sha256:68b8c57ce8f0f24f923e17f24a8458158e17d477893c2a8304becd19e919bf1b",
+    "receipt_proposer": "sha256:2fdb1cfedb13aa8db6baa6f1a183f77a52df4a828f4df74d23133c82542fabbc",
+    "proposal": "sha256:f6e12a46d90c4d0809be54380b118ed567039e77bc82eeffee6cd99eb3b83fd6",
+    "receipt_assayer": "sha256:880249922cd4598d5278f80475a42bc647c651be4cc4e3330b91020c9a539235",
+    "verdict": "sha256:664ea0d6f15583a1a497851a3cd2641b61c390730185d60dd14e02dbf5bd93d2",
+    "chain": "sha256:c6e16a6a9d584b46f904e9d305771f449708682bd423fbad466e74bf27972083",
+    "ledger": "sha256:76556fb47fdc0c932a43266c30bb78aff6df43bf3291be028c164f864d07298a",
+    "root": "sha256:af21a7aa77db76baef15711928662394fb7d527dbc786e1c7105b7b435148f5a"
+  },
+  "status": "kappa-compatible (unverified)",
+  "asserter": "unsigned:caesura"
+}

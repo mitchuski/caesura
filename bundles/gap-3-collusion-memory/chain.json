@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "gap.caesura.testnet",
+  "proposal_id": 7,
+  "status": "refused",
+  "refusal": "verdict: The proposed receiver shop.caesura.testnet does not match the task's required receiver compute.caesura.testnet.",
+  "propose_tx": "9hDu9KFdzyuJhRpakMf1rtqRZ5wwY8wrQuJnvv5ASoNx",
+  "assay_tx": "88kvcnnvFchVrMZ35wJrnhcCArNYyn74cUfgENGx2N8s",
+  "root_tx": "DAjBmbwpASJQZirCyeLnCE9MTiwJpqVGDyqR1vtoAfRd"
+}

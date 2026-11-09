@@ -1,0 +1,21 @@
+{
+  "round": "poisoned-memory",
+  "root": "sha256:faa51c25ba58fc461a07db69919fb7f4a281ca99b339bfb0be8ad18bce826123",
+  "merkle": "c0d50eca7f582bedb8941beb217b2260540ef01c162bdbcaca13214999d592e0",
+  "names": {
+    "task": "sha256:aa52b4c076f761b2518b38f9f179e31c2fc4f4ea8186408ee2bcb5420fc75d8f",
+    "policy": "sha256:2fd1b551f827be1953b0f02dc2c490d7eb16f60ce15ef8595e7efe43896a2321",
+    "proposal_canon": "sha256:e8a668369cce5f712823d976d5e0115d243ca6feb005b4c49122b92dd532ba4c",
+    "receipt_proposer": "sha256:0b39b561f9b5dfb649e15eb5d1b5126462f92d86913c6c7d0416b78b7727936a",
+    "attestation_proposer": "sha256:ad2acc4763c6a8fa590704f7bae7d3b9aecdc0fe6f3baa5dcac4df071ac56718",
+    "proposal": "sha256:168bf2c742007f5dd07d9fffd96009618ab377e2578b8d4bce7ce6fc3986aa13",
+    "receipt_assayer": "sha256:3cac3f3523fd6de8bc4d6d6109337f4a2b784a9f38e81c15bebc126786077d8c",
+    "attestation_assayer": "sha256:0c37c4ece1ddcd2dbd630612f3c5c74f313f21492f4619f8f8fdbac197c18a73",
+    "verdict": "sha256:747f98255866d77422ba22e3238c302eb94f18c551b71d799e8de5e5f1658e32",
+    "chain": "sha256:9e156c04dd9d5a80788af19abddf7c272ec0366fc4240c2539e82076400cfa4e",
+    "ledger": "sha256:ddc11be46ec1eb122e8b34a88554cbd8fe92341df097fcb2160512efa6397e4e",
+    "root": "sha256:faa51c25ba58fc461a07db69919fb7f4a281ca99b339bfb0be8ad18bce826123"
+  },
+  "status": "kappa-compatible (unverified)",
+  "asserter": "unsigned:caesura"
+}

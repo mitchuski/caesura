@@ -1,0 +1,32 @@
+{
+  "gate": "pause.caesura.testnet",
+  "network": "testnet",
+  "at": "2026-11-09T15:29:43.290Z",
+  "results": [
+    {
+      "name": "proposer key calls assay",
+      "outcome": "refused",
+      "detail": "Access key does not allow method assay"
+    },
+    {
+      "name": "assayer key calls propose",
+      "outcome": "refused",
+      "detail": "Access key does not allow method propose"
+    },
+    {
+      "name": "proposer key transfers 1 yocto",
+      "outcome": "refused",
+      "detail": "Access key requires full access"
+    },
+    {
+      "name": "assayer key calls set_policy",
+      "outcome": "refused",
+      "detail": "Access key does not allow method set_policy"
+    },
+    {
+      "name": "outside account calls propose",
+      "outcome": "refused",
+      "detail": "Access key ed25519:HW3Jze8vY5J3CndiF9k3ty4e8EcueqAEhkdVwnBQ2Rtr does not exist at block height 276938573"
+    }
+  ]
+}

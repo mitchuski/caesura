@@ -1,0 +1,17 @@
+{
+  "requests": 2,
+  "nano_usd": 1040218,
+  "usd": 0.001040218,
+  "raw": {
+    "requests": [
+      {
+        "requestId": "0a4a09d2-41a1-5567-9081-983436b3b2f0",
+        "costNanoUsd": 619340
+      },
+      {
+        "requestId": "8884bef7-deab-5668-83bf-bb17e3cb662e",
+        "costNanoUsd": 420878
+      }
+    ]
+  }
+}

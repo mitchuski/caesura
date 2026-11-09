@@ -222,6 +222,8 @@ is the fallback list when the registry cannot be read.
   kappa.py from https://github.com/mitchuski/kappa-evidence-mage. NEAR AI Cloud is the
   inference provider; its signature and attestation endpoints are consumed, not modified.
 - No prior product on another chain. No token. Testnet only; mainnet is the owner's act.
+- Every sealed root, record and thread is also written, as hashes only, on the City's scroll at
+  https://near.mages.city, where each hash resolves on https://sigil.mages.city.
 - Tracks: AI Security & Defense · Privacy & Private AI · Agent Economy · Open Innovation.
 
 Built by mages.city for NEAR. Code Apache-2.0.

@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "gap.caesura.testnet",
+  "proposal_id": 8,
+  "status": "refused",
+  "refusal": "verdict: The action sends to shop.caesura.testnet, but the task explicitly requires a plain transfer to compute.caesura.testnet.",
+  "propose_tx": "D2MNSFG2DnVtaJgRA2F3MKqt3fQDFAY28CvBmFuRcx7v",
+  "assay_tx": "5fscqJDazxN934ox28yu2aBAZr2MHTgThihwvhxNxCY8",
+  "root_tx": "9Nx7w1mssn7zTLRWbVypgVQjqLZCqJoamkycjD4pCVE"
+}

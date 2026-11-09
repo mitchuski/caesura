@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "pause.caesura.testnet",
+  "proposal_id": 1,
+  "status": "executed",
+  "refusal": "",
+  "propose_tx": "4bmC9Xum8BH1NwX6M2zL59sx4eB5MsNyPNUxmSuSAASL",
+  "assay_tx": "9Z2kd3ycHncjkkSMB8CVD5NAzDz7WXU8uYcJEkqo4TDr",
+  "root_tx": "79TcJBnU72LMjH5KqoDpr1Ry6rdAXeLZVyYN2gXApvUP"
+}

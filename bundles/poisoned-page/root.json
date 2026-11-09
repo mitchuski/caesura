@@ -1,0 +1,21 @@
+{
+  "round": "poisoned-page",
+  "root": "sha256:dfcac01fbb92f7774a0ffcf415275b037a818cf62a3086db6e8372890ad10874",
+  "merkle": "9332708850dfa7d8026db71531101824a7d0de97e15cdfe286ba9983b89918f1",
+  "names": {
+    "task": "sha256:2c9ffd6ec25964740c2d86345b3260d7ae67fe9a6273b10db0eac6963fb95c19",
+    "policy": "sha256:2fd1b551f827be1953b0f02dc2c490d7eb16f60ce15ef8595e7efe43896a2321",
+    "proposal_canon": "sha256:262c8e17200c1f19cdaa5a150a21ebfca321652a8075d6efc0f80d16677879ba",
+    "receipt_proposer": "sha256:92a9f2c99d97b0d74c31d7861a81b125e803bea83104f982a7ae62eed41e47b2",
+    "attestation_proposer": "sha256:2f9c25706c2327d8c35f6e90cd86c5c11b20d3157d2df57dbe745de6e82ad86f",
+    "proposal": "sha256:aeef92deeec8542adea5677d8011fe4dc10202b5df6c44ebf2aae344938e479a",
+    "receipt_assayer": "sha256:1984bb3bde308ee298396c788d9dae8573a00ce8f44253a8666790795829b979",
+    "attestation_assayer": "sha256:9719857bbf351eea3528c01f7f3fcf72703f735ec57c00d389908d68847081ae",
+    "verdict": "sha256:ab88fdfad903a4c5eb7e7423271b95e6b3cb7e78641a658c108be69b212e21fd",
+    "chain": "sha256:799f4f0f40ed5341bb9c4d6be20ffa82cd0803a91892405ad473dd2a447e0316",
+    "ledger": "sha256:787f7b807e03279a133fe2cd4f9b4f2d2f58d71a701d5589a2403bcf322e8665",
+    "root": "sha256:dfcac01fbb92f7774a0ffcf415275b037a818cf62a3086db6e8372890ad10874"
+  },
+  "status": "kappa-compatible (unverified)",
+  "asserter": "unsigned:caesura"
+}

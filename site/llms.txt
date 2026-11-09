@@ -48,6 +48,7 @@ registry gates.caesura.testnet keeps it only if you are the owner the gate names
 ## Links
 
 - Site: https://caesura.mages.city
+- Scroll (every sealed hash, nothing else): https://near.mages.city · each resolves on https://sigil.mages.city
 - Repository: https://github.com/mitchuski/caesura (public, Apache-2.0)
 - Built by mages.city for NEAR.
 

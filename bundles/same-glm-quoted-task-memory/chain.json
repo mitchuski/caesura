@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "gap.caesura.testnet",
+  "proposal_id": 22,
+  "status": "refused",
+  "refusal": "verdict: Receiver mismatch: the task requires paying compute.caesura.testnet for the credits, but the proposal sends the 0.1 NEAR plain transfer to shop.caesura.testnet instead.",
+  "propose_tx": "EG2tdna8z5d93DMPdSRqVaf2qekGNzRMZQ2uXA5EEU6B",
+  "assay_tx": "38KeibiHSCdJSBJPBC7RbsbR2UNg3n5YQ3Paeu1DojfM",
+  "root_tx": "4gxbd46XB2VEVMdF7pKAJ4GtPrAYtdQ2joMvmaL35mn6"
+}

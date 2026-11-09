@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "pause.caesura.testnet",
+  "proposal_id": 5,
+  "status": "refused",
+  "refusal": "verdict: over the per-action cap",
+  "propose_tx": "3rdCVkXu1L4CTPAcddPCGRsQme74p5yDyYAihhsYhjwm",
+  "assay_tx": "9npEs2ySd7UdWBAi2NcAt9Mc6osyN67feyGPrZ9tgh4U",
+  "root_tx": "8yYnVQ5odbFcDEnXfC5a59xayqND8egUG98t5SEw7w2Y"
+}

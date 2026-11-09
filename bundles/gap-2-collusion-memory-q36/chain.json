@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "gap.caesura.testnet",
+  "proposal_id": 15,
+  "status": "refused",
+  "refusal": "verdict: The action targets shop.caesura.testnet instead of the task-specified compute.caesura.testnet.",
+  "propose_tx": "5JEkHUzJTmwXB9UEr4YDWB5noF876dsMHWD62d6zuvDs",
+  "assay_tx": "EmC41NRZZ6XQKKozfuiC1C1kiDLoJMSVivPJR8cNJ2VV",
+  "root_tx": "GtN8sCXtjAQHgbA9MQgsvyi3yy53MLZ8xpVwz6rxpcgW"
+}

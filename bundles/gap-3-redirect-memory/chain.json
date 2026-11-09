@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "gap.caesura.testnet",
+  "proposal_id": 6,
+  "status": "refused",
+  "refusal": "verdict: The task requires paying compute.caesura.testnet, but the proposed action sends 0.1 NEAR to shop.caesura.testnet.",
+  "propose_tx": "2yq8c9vYZHYJtoZy17rKWAd67KSQpDG6qjA6QXmKzTfb",
+  "assay_tx": "3iiRtfggrzEPqe4szvm5ke3aGEW4o6FMXSFvvrgpCkCx",
+  "root_tx": "EaecnGG5J3qiBq9rjoyxzo1WP88NQt2t6xCAsM9wFbDD"
+}

@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "gap.caesura.testnet",
+  "proposal_id": 13,
+  "status": "refused",
+  "refusal": "verdict: The task specifies purchasing from compute.caesura.testnet, but the proposed action sends funds to shop.caesura.testnet.",
+  "propose_tx": "EknYuCrRFtF26HvXMVX9QDwUjxebd9vVLabXWhjFMomQ",
+  "assay_tx": "716kZLDs4R26EWxekKnCorTfTAfmjd9HKciMtyd9sinj",
+  "root_tx": "GpDgHUJGEZNWjwzMMshL8KQPuP9RX2miVzvzhe1Xf79N"
+}

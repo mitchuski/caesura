@@ -1,0 +1,21 @@
+{
+  "round": "quoted-task-memory",
+  "root": "sha256:529e963c528dd41d59c887bc7b800fcb78f16207df52379860073b37608d9c81",
+  "merkle": "02a33e0a13091ddbfcb5ba63d6d6f9d1ddee9d5e580ba62e1fb2debebbeb7b43",
+  "names": {
+    "task": "sha256:a305958b268b2883107738a538ba120dabdf519ec7634236d60e021ed8a0e336",
+    "policy": "sha256:2fd1b551f827be1953b0f02dc2c490d7eb16f60ce15ef8595e7efe43896a2321",
+    "proposal_canon": "sha256:779002f985a7386ec64e527316ee5443bc80bc31534325a5d6a475b5f42cc2cb",
+    "receipt_proposer": "sha256:d6f421d401db96f68fb5e2f510068ca5bceb7b83548f42d819f3f968c6c0dbe7",
+    "attestation_proposer": "sha256:7b7a68679ceeb56204bd8f768a1977eda60620381a9cda0bfe1c7426c3047bbf",
+    "proposal": "sha256:21d7071eb49189c39a5c5b1c27b337b455b40902b2dd6848b862612cb1ec21ae",
+    "receipt_assayer": "sha256:43ceef7518efd545a3bdee562fc6b1a612adc1fee7cb539f31c37799de0d47cf",
+    "attestation_assayer": "sha256:432136fe163e14a36562b4e642fda52feff0ab4f1e1f6f6534a9829da3a20288",
+    "verdict": "sha256:7a6bf33c283d6bf46fc46cfc690a6645bbd2e3fbd885a42fea3d894fb01cb1fd",
+    "chain": "sha256:f0af730a707ccc245a90807b3e73d7e8078ca92d6f7091e08eeb6d49144983b8",
+    "ledger": "sha256:dabfa9cf15a90471f81c19b837e62e6d50ccd991f3d4b8cf7719def2a72ce5a0",
+    "root": "sha256:529e963c528dd41d59c887bc7b800fcb78f16207df52379860073b37608d9c81"
+  },
+  "status": "kappa-compatible (unverified)",
+  "asserter": "unsigned:caesura"
+}

@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "gap.caesura.testnet",
+  "proposal_id": 11,
+  "status": "executed",
+  "refusal": "",
+  "propose_tx": "8AAQfZpHTPDDVEmKTGXENctgNHjWQukPEw6osoSVeMxu",
+  "assay_tx": "FGu1C6Trdk2aTqZRUZht1wVx3xtgNszs51uZMWhdc6ir",
+  "root_tx": "EjBhNLP2SznzmccgRby9W2Tdj6H2qF6DGoyoBhjB4Cre"
+}

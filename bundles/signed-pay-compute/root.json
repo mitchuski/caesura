@@ -1,0 +1,33 @@
+{
+  "round": "signed-pay-compute",
+  "root": "sha256:afeec5f949cc6d6f86eb5135befad8feddeda6d9c1640494d13527acd1391986",
+  "merkle": "0ff149d0e8083727381e1a31bdb923b1748a9a5a7263a32253b28cd38e97396a",
+  "names": {
+    "task": "sha256:0c338dcc686ff0e53f7b9affa4b2a788a6fbab9c1e9ab4c03165c15a5200b12c",
+    "policy": "sha256:2fd1b551f827be1953b0f02dc2c490d7eb16f60ce15ef8595e7efe43896a2321",
+    "proposal_canon": "sha256:3592e88c219331a21002cbe1257636cbe91c6de3d3fc071f58011f5a615e70f7",
+    "receipt_proposer": "sha256:044ec062f424d4023cb1162aa8a68922b7782189dd73b3748c25ae8e56c74575",
+    "attestation_proposer": "sha256:6f26b306f73d6810641a4e7dbf23305c1f5aa0352d4ce41b5919ac23ff432058",
+    "proposal": "sha256:ecfecad096bb1b3f3cf80dbf90a3d4b9141355be81bd36216298149bba273e08",
+    "receipt_assayer": "sha256:9406eac48a87bce03615cbcda0ecf8c67da7219c1bb6bb0f04f6d55599dce465",
+    "attestation_assayer": "sha256:fc07692475f69a1b84b3ad87ec2a8bc6c6414125cbfa796ec9e25a9977a88925",
+    "verdict": "sha256:07dc86a2f3adf8da870df68099afbc5b314b6dda10340a4346195f20ad4ef292",
+    "chain": "sha256:c567af53a46de10a4c5d5651afe0d089e6e76d699221bdcfc934c7a7f4b48209",
+    "key_policy": "sha256:619e2f7af4bc89f7342d5962318a64c064716b720d5f319cc9a358b9c531b0f5",
+    "seat_key_proposer": "sha256:67b342c780017e6847e27e4b4d46909357d46c26fffef769e7b89d2bd479c8a3",
+    "sig_proposer": "sha256:5ba748b41dfda32e7305d42eb9904082fcb41c6b11bcc609186e3a520febd22e",
+    "pq_pub_assayer": "sha256:ecff7aacb48a674b69e682e49f8c0bd7b5b798c8f9f5be7987e69bf99ba77a2a",
+    "seat_key_assayer": "sha256:4623d4011771b7c2f143fc79d153f4c6d4f3d6e26a9f836620a34aa6b7de8431",
+    "pq_sig_assayer": "sha256:43c734293df6d04b1b4bce5b8d390c7a8cc5104a6195c69de51484dafc906e38",
+    "sig_assayer": "sha256:7f2b8b1fae448d9667de1df3eb3b93af7a10b5f2455c0f83801e19847860ec4b",
+    "ceremony": "sha256:7b8d2ed13cd767f186ba1b9d3d2f2158aaf906342afefa143577e7c9bc61c3dd",
+    "pq_pub_owner": "sha256:807de6e4ee570bce2fa3279217bf8fd9997b34e71aaeb70e194f7532e160f535",
+    "seat_key_owner": "sha256:747d7c69e1849c99b158f0664a1dc4b55ed3d29146ac9ffa997714eca93cae97",
+    "pq_sig_owner": "sha256:dca67e3ad6a6b378dac28afb8f18f72396f0b4208b50a25ce038932ae77e3668",
+    "sig_owner": "sha256:4c474e64c302317f1d69308dd2dd055d3a16f8783beb4ebd50cac4950eb6e681",
+    "ledger": "sha256:77e5df07c2a7c25d9fc9a8839b52efe4714190ca23384643565a3d0caf5550f4",
+    "root": "sha256:afeec5f949cc6d6f86eb5135befad8feddeda6d9c1640494d13527acd1391986"
+  },
+  "status": "kappa-compatible (unverified)",
+  "asserter": "unsigned:caesura"
+}

@@ -1,0 +1,19 @@
+{
+  "round": "salami-3",
+  "root": "sha256:f75b0d41e91c1e6497f0f5118b1f1825db0e8035365df72816a398323bf02477",
+  "merkle": "534432a6ca43ec33ffaae08b9bc4f828e35d15d254089a5af359180f9e9ff0da",
+  "names": {
+    "task": "sha256:bdee119ea6a5d4ca097bc6eec06761f7d701b4aad03d22564ff6b90e4aa42ddb",
+    "policy": "sha256:2fd1b551f827be1953b0f02dc2c490d7eb16f60ce15ef8595e7efe43896a2321",
+    "proposal_canon": "sha256:49332ebae7a64bb7c2d062bd18c34b557829e466a577e4766827fa8767cf5844",
+    "receipt_proposer": "sha256:ed551a830db3b57f9c78d1fe6c6ee59ed8d98177eb77a0cf74eab95271b7981d",
+    "proposal": "sha256:1dc780fb59d79941f7909852bd48e29ee4c64e1021fb70983af5c6488331a303",
+    "receipt_assayer": "sha256:59327e1e2c1b767bb61dc3ed7ba6bda93031b361a03bebb9aa7ac2bc9e8efcae",
+    "verdict": "sha256:ca43d43e860b2701f265423c4170055ad23b3312dc00dd1a8b82f4fcd0f61d94",
+    "chain": "sha256:8f17d99a8366c282c298ce1b3d850a27429911034db1b56e639676f757fd456e",
+    "ledger": "sha256:70a6d44689b3c1832a63b28a70a181d60ef82e8b6e29d2ff304653bf77d0397c",
+    "root": "sha256:f75b0d41e91c1e6497f0f5118b1f1825db0e8035365df72816a398323bf02477"
+  },
+  "status": "kappa-compatible (unverified)",
+  "asserter": "unsigned:caesura"
+}

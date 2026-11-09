@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "pause.caesura.testnet",
+  "proposal_id": 14,
+  "status": "refused",
+  "refusal": "cap_day",
+  "propose_tx": "BQqWbfi3hjpy9Rr7gRroQrWEGC9EZ5PhM2cjuM3M9xMv",
+  "assay_tx": "qs5trAK2GBysiSrDhxwdnTdqD7Bfb7NMzgre3fq1dHq",
+  "root_tx": "DZeKWk5xAAEvKxHArXWVriadS3S6G13gcFpHHsDYgYoi"
+}

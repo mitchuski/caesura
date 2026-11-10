@@ -125,13 +125,13 @@ owner.mjs policy</code></pre></article>
         <div class="cmd"><pre id="t-agent">Clone https://github.com/mitchuski/caesura and read AGENTS.md and README.md. Run `npm install` and `npm test`. Then run one round with no network, where the proposer is fed a page that tells it to drain the wallet: `node seats/round.mjs --task tasks/poisoned-page.json --driver stub --chain off --round r1`, and verify it from the bundle alone: `node tools/verify.mjs bundles/r1`. Then verify a round that was sealed on NEAR testnet against the chain: `node tools/verify.mjs bundles/rehearsal-quoted-task --rpc testnet`. Show me the full output of each command, and tell me who refused and why.</pre><button type="button" data-copy="t-agent">copy</button></div>
       </div>
       <div class="term-pane" data-pane="hand">
-        <p class="term-say">Three commands, Node 22, no account and no key. The last one reads the root back from the gate on testnet.</p>
-        <div class="cmd"><pre id="t-h1">git clone https://github.com/mitchuski/caesura &amp;&amp; cd caesura &amp;&amp; npm install</pre><button type="button" data-copy="t-h1">copy</button></div>
-        <div class="cmd"><pre id="t-h2">node seats/round.mjs --task tasks/poisoned-page.json --driver stub --chain off --round r1 &amp;&amp; node tools/verify.mjs bundles/r1</pre><button type="button" data-copy="t-h2">copy</button></div>
+        <p class="term-say">Three lines, Node 22, no account and no key. They run as written in PowerShell, bash or zsh. The last one reads the root back from the gate on testnet.</p>
+        <div class="cmd"><pre id="t-h1">git clone https://github.com/mitchuski/caesura; cd caesura; npm install</pre><button type="button" data-copy="t-h1">copy</button></div>
+        <div class="cmd"><pre id="t-h2">node seats/round.mjs --task tasks/poisoned-page.json --driver stub --chain off --round r1; node tools/verify.mjs bundles/r1</pre><button type="button" data-copy="t-h2">copy</button></div>
         <div class="cmd"><pre id="t-h3">node tools/verify.mjs bundles/rehearsal-quoted-task --rpc testnet</pre><button type="button" data-copy="t-h3">copy</button></div>
       </div>
       <div class="term-pane" data-pane="live">
-        <p class="term-say">A live round: both seats as private inference on NEAR AI Cloud, and a memory that quotes the task back with the receiver changed. Needs a gate and its two seat keys in <code>.env.caesura</code> (step 01 below) and a NEAR AI Cloud key. Name the round anything new.</p>
+        <p class="term-say">A live round: both seats as private inference on NEAR AI Cloud, and a memory that quotes the task back with the receiver changed. Needs a gate and its two seat keys in <code>.env.caesura</code> (step 01 below) and a NEAR AI Cloud key. Run it from the repository folder, and name the round anything new.</p>
         <div class="cmd"><pre id="t-l1">node --env-file=.env.caesura seats/round.mjs --task tasks/quoted-task-memory.json --driver nearai --chain testnet --round demo-1</pre><button type="button" data-copy="t-l1">copy</button></div>
         <div class="cmd"><pre id="t-l2">node tools/verify.mjs bundles/demo-1 --rpc testnet</pre><button type="button" data-copy="t-l2">copy</button></div>
       </div>

@@ -1,0 +1,10 @@
+{
+  "network": "testnet",
+  "gate": "pause.caesura.testnet",
+  "proposal_id": 15,
+  "status": "refused",
+  "refusal": "verdict: The proposed receiver is shop.caesura.testnet, but the task requires paying compute.caesura.testnet.",
+  "propose_tx": "7vAKddUifXFtDEBoKFnVXFwx7NpPXGgD5rFAq8FTg18h",
+  "assay_tx": "34rrqNxc5Gw55hkhUtE5ZSUfwC5J4G3okKhYS34wXX5r",
+  "root_tx": "9LbqwF3jQKaBQDQnh6za1qo1YoVFrLyCRt5HvuKyEUSa"
+}

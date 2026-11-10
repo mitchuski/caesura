@@ -262,3 +262,86 @@ const SUITE_TITLE = { 'ed25519': 'ed25519 signed', 'mldsa65-ed25519': 'ML-DSA-65
     renderCurve(b); renderFront(b); renderMatrix(b)
   }).catch(function (e) { live.className = 'live err'; live.innerHTML = '<span class="dot"></span> index unavailable: ' + e.message })
 })()
+
+// ---------------------------------------------------------------- the window: run a round, paste it, read it from the chain
+;(function () {
+  var term = document.getElementById('term'); if (!term) return
+  var RPC = { testnet: 'https://test.rpc.fastnear.com', mainnet: 'https://free.rpc.fastnear.com' }
+  var EXPLORER = { testnet: 'https://testnet.nearblocks.io', mainnet: 'https://nearblocks.io' }
+  function view(network, id, method, args) {
+    return fetch(RPC[network] || RPC.testnet, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 'caesura', method: 'query', params: { request_type: 'call_function', finality: 'final', account_id: id, method_name: method, args_base64: btoa(JSON.stringify(args || {})) } }) })
+      .then(function (r) { return r.json() })
+      .then(function (j) { if (j.error) throw new Error(j.error.data || j.error.message || 'rpc'); var b = j.result.result, s = ''; for (var i = 0; i < b.length; i++) s += String.fromCharCode(b[i]); return JSON.parse(decodeURIComponent(escape(s))) })
+  }
+  var NEAR = function (y) { try { return (Number(BigInt(y) / 1000000000000000000000n) / 1000).toFixed(3).replace(/\.?0+$/, '') } catch (e) { return '?' } }
+  // tabs and copy
+  term.querySelectorAll('[data-tab]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      term.querySelectorAll('[data-tab]').forEach(function (x) { x.classList.toggle('on', x === b) })
+      term.querySelectorAll('[data-pane]').forEach(function (x) { x.classList.toggle('on', x.dataset.pane === b.dataset.tab) })
+    })
+  })
+  term.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = document.getElementById(b.dataset.copy).textContent, done = function () { b.textContent = 'copied'; setTimeout(function () { b.textContent = 'copy' }, 1400) }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () {})
+      else { var r = document.createRange(); r.selectNodeContents(document.getElementById(b.dataset.copy)); var s = getSelection(); s.removeAllRanges(); s.addRange(r) }
+    })
+  })
+  var input = document.getElementById('t-in'), out = document.getElementById('t-out'), go = document.getElementById('t-go')
+  function line(cls, mark, text, href, linkText) {
+    var d = document.createElement('div'); d.className = 'l ' + cls
+    var m = document.createElement('span'); m.className = 'm'; m.textContent = mark; d.appendChild(m)
+    var s = document.createElement('span'); s.textContent = text; d.appendChild(s)
+    if (href) { var a = document.createElement('a'); a.href = href; a.textContent = linkText; if (href.charAt(0) !== '#') { a.target = '_blank'; a.rel = 'noopener' } d.appendChild(document.createTextNode(' ')); d.appendChild(a) }
+    out.appendChild(d)
+  }
+  function gates() {
+    return fetch('gates.json', { cache: 'no-store' }).then(function (r) { return r.json() }).then(function (cfg) {
+      if (Array.isArray(cfg)) return cfg
+      var net = cfg.network || 'testnet', fb = cfg.fallback || []
+      if (!cfg.registry) return fb
+      return view(net, cfg.registry, 'list_gates', { from: 0, limit: 100 }).then(function (rows) { return rows && rows.length ? rows.map(function (e) { return { id: e.gate, network: net } }) : fb }).catch(function () { return fb })
+    })
+  }
+  function read() {
+    var text = input.value || ''; out.innerHTML = ''
+    var m = /evidence root\s+(sha256:[0-9a-f]{64})/.exec(text) || /(sha256:[0-9a-f]{64})/.exec(text) || /\b([0-9a-f]{64})\b/.exec(text)
+    if (!m) { line('no', '✕', 'no root found in what you pasted. Look for a line like "evidence root sha256:…".'); return }
+    var root = m[1].indexOf('sha256:') === 0 ? m[1] : 'sha256:' + m[1]
+    var pass = /VERIFY:\s*PASS/.test(text), fail = /VERIFY:\s*FAIL/.test(text)
+    var local = /gate \(local\)\s*→\s*(.+)/.exec(text)
+    line('mute', '·', 'root ' + root)
+    line('mute', '·', 'reading the gates on NEAR testnet…')
+    go.disabled = true
+    gates().then(function (gs) {
+      return Promise.all(gs.map(function (g) { return view(g.network, g.id, 'list_roots', { from: 0, limit: 200 }).then(function (rows) { return { g: g, rows: rows || [] } }).catch(function () { return { g: g, rows: [] } }) }))
+    }).then(function (all) {
+      var hit = null
+      all.forEach(function (x) { x.rows.forEach(function (r) { if (r.root === root) hit = { g: x.g, r: r } }) })
+      out.removeChild(out.lastChild)
+      if (!hit) {
+        line('mute', '○', 'not on a gate: ' + all.length + ' gates read, none carries this root.')
+        if (local) line('ok', '✓', 'a local round (--chain off). Its gate said: ' + local[1].trim())
+        if (pass) line('ok', '✓', 'your verifier printed VERIFY: PASS, so every hash in the bundle re-derives to this root.')
+        if (fail) line('no', '✕', 'your verifier printed VERIFY: FAIL.')
+        line('mute', '·', 'To see it here, run the round with --chain testnet on a gate, or verify a sealed round with --rpc testnet.')
+        return
+      }
+      line('ok', '✓', 'found on ' + hit.g.id + ' · proposal #' + hit.r.proposal_id + ' · round ' + hit.r.round, EXPLORER[hit.g.network] + '/address/' + hit.g.id, 'the gate ↗')
+      return view(hit.g.network, hit.g.id, 'list_proposals', { from: 0, limit: 200 }).then(function (props) {
+        var p = (props || []).filter(function (x) { return x.id === hit.r.proposal_id })[0]
+        if (p) {
+          var s = String(p.status || '').toLowerCase(), why = p.refusal || ''
+          var by = s !== 'refused' ? '' : /^verdict/.test(why) ? 'the second seat (the assayer)' : /^paused/.test(why) ? 'the owner' : 'the gate\'s policy'
+          line('mute', '·', 'proposed → ' + p.action.receiver_id + ' · ' + NEAR(p.action.deposit) + ' Ⓝ' + (p.action.method_name ? ' · ' + p.action.method_name : ''))
+          if (s === 'refused') { line('no', '‖', 'refused, held by ' + by); line('mute', '·', why) }
+          else if (s === 'executed') line('ok', '→', 'executed: both seats and the policy held, and the spend went through')
+          else line('mute', '·', 'status: ' + s)
+        }
+        line('ok', '✓', 'the root you pasted is the root the gate carries for that proposal.' + (pass ? ' Your verifier agrees: VERIFY: PASS.' : ''), '#board', 'see it on the board')
+      })
+    }).catch(function (e) { line('no', '✕', 'could not reach testnet: ' + e.message) }).then(function () { go.disabled = false })
+  }
+  go.addEventListener('click', read)
+})()

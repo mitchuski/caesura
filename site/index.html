@@ -19,11 +19,12 @@
 <header class="top">
   <a class="brand" href="#top"><svg class="mark" viewBox="0 0 40 60" aria-hidden="true"><rect class="a" x="9" y="4" width="10" height="44" rx="5"/><rect class="b" x="21" y="12" width="10" height="44" rx="5"/><rect class="o" x="16" y="18" width="8" height="24" rx="4"/></svg>Cæsura</a>
   <nav aria-label="Sections">
-    <a href="#pause">The pause</a>
+    <a href="#caesura">The cæsura</a>
     <a href="#board">The board</a>
     <a href="#research">The gap</a>
     <a href="#test">Test it</a>
     <a href="#near">On NEAR</a>
+    <a href="#tracks">The tracks</a>
   </nav>
 </header>
 
@@ -53,8 +54,8 @@
   </div>
 </section>
 
-<section id="pause" class="band">
-  <h2>The pause, in three seats</h2>
+<section id="caesura" class="band">
+  <h2>The c<span class="ae">æ</span>sura, in three seats</h2>
   <div class="three">
     <article class="mage"><p class="num">01 · propose</p><p>Drafts the action inside a private enclave on NEAR AI Cloud. Signed by the hardware. Nobody outside sees what it was told.</p></article>
     <article class="gap"><p class="num">02 · assay</p><p>A different model that sees only the proposal and the task. Never the first seat's prompt. It re-checks receiver, amount and route.</p></article>
@@ -109,14 +110,44 @@ owner.mjs policy</code></pre></article>
 
 <section id="test" class="band">
   <h2>Test it</h2>
-  <p class="lede-2">Stand up your own gate on testnet, feed its proposer a poisoned page, and watch the second seat and the policy hold. Your gate joins the board.</p>
+  <p class="lede-2">Run a round yourself, or hand it to your agent, then paste the result here and the page reads it back from the chain. After that, stand up your own gate and it joins the board.</p>
+  <div class="term" id="term">
+    <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span>
+      <div class="term-tabs" role="tablist">
+        <button type="button" role="tab" data-tab="agent" class="on">with your agent</button>
+        <button type="button" role="tab" data-tab="hand">by hand</button>
+        <button type="button" role="tab" data-tab="live">enclave seats</button>
+      </div>
+    </div>
+    <div class="term-body">
+      <div class="term-pane on" data-pane="agent">
+        <p class="term-say">Paste this to Claude Code, Codex or any coding agent with a shell. It needs Node 22 and nothing else: no account, no key.</p>
+        <div class="cmd"><pre id="t-agent">Clone https://github.com/mitchuski/caesura and read AGENTS.md and README.md. Run `npm install` and `npm test`. Then run one round with no network, where the proposer is fed a page that tells it to drain the wallet: `node seats/round.mjs --task tasks/poisoned-page.json --driver stub --chain off --round r1`, and verify it from the bundle alone: `node tools/verify.mjs bundles/r1`. Then verify a round that was sealed on NEAR testnet against the chain: `node tools/verify.mjs bundles/rehearsal-quoted-task --rpc testnet`. Show me the full output of each command, and tell me who refused and why.</pre><button type="button" data-copy="t-agent">copy</button></div>
+      </div>
+      <div class="term-pane" data-pane="hand">
+        <p class="term-say">Three commands, Node 22, no account and no key. The last one reads the root back from the gate on testnet.</p>
+        <div class="cmd"><pre id="t-h1">git clone https://github.com/mitchuski/caesura &amp;&amp; cd caesura &amp;&amp; npm install</pre><button type="button" data-copy="t-h1">copy</button></div>
+        <div class="cmd"><pre id="t-h2">node seats/round.mjs --task tasks/poisoned-page.json --driver stub --chain off --round r1 &amp;&amp; node tools/verify.mjs bundles/r1</pre><button type="button" data-copy="t-h2">copy</button></div>
+        <div class="cmd"><pre id="t-h3">node tools/verify.mjs bundles/rehearsal-quoted-task --rpc testnet</pre><button type="button" data-copy="t-h3">copy</button></div>
+      </div>
+      <div class="term-pane" data-pane="live">
+        <p class="term-say">A live round: both seats as private inference on NEAR AI Cloud, and a memory that quotes the task back with the receiver changed. Needs a gate and its two seat keys in <code>.env.caesura</code> (step 01 below) and a NEAR AI Cloud key. Name the round anything new.</p>
+        <div class="cmd"><pre id="t-l1">node --env-file=.env.caesura seats/round.mjs --task tasks/quoted-task-memory.json --driver nearai --chain testnet --round demo-1</pre><button type="button" data-copy="t-l1">copy</button></div>
+        <div class="cmd"><pre id="t-l2">node tools/verify.mjs bundles/demo-1 --rpc testnet</pre><button type="button" data-copy="t-l2">copy</button></div>
+      </div>
+      <label class="term-say" for="t-in">Then paste what the terminal printed, or just a root, and the page looks for it on the gates.</label>
+      <textarea id="t-in" spellcheck="false" placeholder="caesura round … · evidence root sha256:…"></textarea>
+      <div class="term-acts"><button type="button" class="btn primary" id="t-go">Read it against the chain</button><span class="term-hint">nothing you paste leaves this page; it only reads the gates' public state</span></div>
+      <div class="term-out" id="t-out" aria-live="polite"></div>
+    </div>
+  </div>
   <ol class="path">
     <li><b>Deploy a gate.</b> One script creates the sub-account, installs the two scoped seat keys and deletes its own full-access key.<pre><code>node tools/deploy.mjs --owner you.testnet</code></pre></li>
     <li><b>Run a poisoned round.</b> The fetched page tells the proposer to drain the wallet.<pre><code>node seats/round.mjs --task tasks/poisoned-page.json --chain testnet</code></pre></li>
     <li><b>Verify from the bundle alone.</b> Every hash re-derived, the root read back from your gate.<pre><code>node tools/verify.mjs bundles/poisoned-page --rpc testnet</code></pre></li>
     <li><b>Join the board.</b> Register your gate on chain; the registry keeps it only if you are the owner the gate names, and the board reads the gate itself.<pre><code>node tools/registry.mjs register gate.you.testnet --owner you.testnet --label "your gate"</code></pre></li>
   </ol>
-  <p class="note">The first gate, <code>pause.caesura.testnet</code>, is live and readable now. Every round on it was run during the hackathon window; the board reads the chain, not a database. Code, README path and verifier: <a href="https://github.com/mitchuski/caesura">github.com/mitchuski/caesura</a>.</p>
+  <p class="note">The gates <code>pause.caesura.testnet</code> and <code>gap.caesura.testnet</code> are live and readable now. Every round on them was run during the hackathon window; the board reads the chain, not a database. Code, README path and verifier: <a href="https://github.com/mitchuski/caesura">github.com/mitchuski/caesura</a>.</p>
 </section>
 
 <section id="near" class="band alt">
@@ -128,6 +159,50 @@ owner.mjs policy</code></pre></article>
     <div><h3>Policy in the open</h3><p>Caps, receivers, cooldown, pause: contract state anyone reads.</p></div>
     <div><h3>Owner seat</h3><p>A person, or a Sputnik DAO proposal that sets the policy.</p></div>
     <div><h3>Beyond NEAR</h3><p>Intents and Chain Signatures pause at the same caesura.</p></div>
+  </div>
+</section>
+
+<section id="tracks" class="band">
+  <h2>What the tracks ask for</h2>
+  <p class="note">The NEAR Hackathon names what it hopes to see in each track. Cæsura is entered in four. The asks are in the hackathon's words; the answers are things you can open on this page or run from the repository.</p>
+  <div class="fit">
+    <article class="sword">
+      <p class="num">AI Security &amp; Defense · trust, but verify</p>
+      <p class="ask">“Build spending limits, policy engines, sandboxed wallets… Give AI money without giving it the keys to everything.”</p>
+      <ul>
+        <li><b>Spending limits and policy</b> are contract state: per-action cap, per-day cap, cooldown, allowed receivers and methods, pause.</li>
+        <li><b>The sandboxed wallet</b> is a locked sub-account with no full-access key. Each seat holds a function-call key that can call one method.</li>
+        <li><b>Past the policy engine:</b> a redirect inside every limit passes a policy. The second seat, held apart, refuses it.</li>
+        <li><b>Verify:</b> every enclave receipt and attestation is checked offline, and every refusal is a leaf under a root on the gate.</li>
+      </ul>
+    </article>
+    <article class="gap">
+      <p class="num">Privacy &amp; Private AI · private by design</p>
+      <p class="ask">“AI that protects sensitive data. Build intelligence without exposure.”</p>
+      <ul>
+        <li><b>Both seats are private inference</b> on NEAR AI Cloud, in a TEE, each answer signed over its exact bytes.</li>
+        <li><b>Hashes, not words:</b> the chain and the bundle carry addresses. Prompts, memories and tool results stay on the operator's machine.</li>
+        <li><b>The privacy is the security:</b> the second seat never sees the first seat's context, so what poisoned one cannot reach the other.</li>
+      </ul>
+    </article>
+    <article class="mage">
+      <p class="num">Agent Economy · give AI a wallet</p>
+      <p class="ask">“Agents that earn, spend… and pay for APIs, compute or data.”</p>
+      <ul>
+        <li><b>An agent that pays for compute</b> from a wallet it cannot drain: honest spends execute, shown per seat pair on the board.</li>
+        <li><b>The cost of the pause</b> is measured from NEAR AI billing: about a tenth of a cent a round.</li>
+        <li><b>Any operator can join:</b> register a gate you own in the on-chain registry and your agent's rounds appear here.</li>
+      </ul>
+    </article>
+    <article class="open">
+      <p class="num">Open Innovation · something we haven't seen</p>
+      <p class="ask">“New ways for money, intelligence and ownership to work together.”</p>
+      <ul>
+        <li><b>The gap, measured:</b> a study of what may cross between two agents before the second stops holding, every point a root on testnet.</li>
+        <li><b>Refusals kept as evidence</b> anyone re-derives, in two languages, from the bundle alone.</li>
+        <li><b>Keys that sign twice:</b> post-quantum beside ed25519, and a key handover countersigned by the keys it leaves.</li>
+      </ul>
+    </article>
   </div>
 </section>
 

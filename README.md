@@ -49,6 +49,10 @@ node tools/roots.mjs bundles
 # 4 · one line per sealed round (the board's roots.json is baked from this)
 ```
 
+Paste the output of step 2 or 3 into the window under "Test it" at https://caesura.mages.city/#test
+and the page looks for the root on the gates; a round run with `--chain testnet`, or any sealed
+round verified with `--rpc testnet`, is read back from the chain there.
+
 The sealed testnet rounds live in `bundles/` as they are run during the hackathon window, and
 the board shows the same proposals read from the gates. For any of them:
 

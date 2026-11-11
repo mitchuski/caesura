@@ -2,6 +2,10 @@
 
 One agent proposes ‖ another, held apart, checks. Only then does anything move.
 
+**Demo.** A three-minute video of one live round on NEAR testnet, read back from the chain:
+[watch on YouTube](https://www.youtube.com/watch?v=cDvvHuwGSTY) · [the post on X](https://x.com/privacymage/status/2120558253767843927) ·
+the live board at [caesura.mages.city](https://caesura.mages.city).
+
 A *caesura* is the break in the middle of a line of verse. Here it is the pause between an
 AI agent proposing a spend and the spend happening. A small NEAR contract (the gate) holds
 the only keys. It releases an action when a second, held-apart seat agrees and the policy

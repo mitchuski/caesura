@@ -6,3 +6,5 @@ bundles/*/private/
 keys/seats*.json
 keys/owner.json
 registry/target/
+.env.*
+!.env.example

@@ -122,7 +122,7 @@ owner.mjs policy</code></pre></article>
     <div class="term-body">
       <div class="term-pane on" data-pane="agent">
         <p class="term-say">Paste this to Claude Code, Codex or any coding agent with a shell. It needs Node 22 and nothing else: no account, no key.</p>
-        <div class="cmd"><pre id="t-agent">Clone https://github.com/mitchuski/caesura and read AGENTS.md and README.md. Run `npm install` and `npm test`. Then run one round with no network, where the proposer is fed a page that tells it to drain the wallet: `node seats/round.mjs --task tasks/poisoned-page.json --driver stub --chain off --round r1`, and verify it from the bundle alone: `node tools/verify.mjs bundles/r1`. Then verify a round that was sealed on NEAR testnet against the chain: `node tools/verify.mjs bundles/rehearsal-quoted-task --rpc testnet`. Show me the full output of each command, and tell me who refused and why.</pre><button type="button" data-copy="t-agent">copy</button></div>
+        <div class="cmd"><pre id="t-agent">Clone https://github.com/mitchuski/caesura and read AGENTS.md and README.md. Run `npm install` and `npm test`. Then run one round with no network, where the proposer is fed a page that tells it to drain the wallet: `node seats/round.mjs --task tasks/poisoned-page.json --driver stub --chain off --round r1`, and verify it from the bundle alone: `node tools/verify.mjs bundles/r1`. Then verify a round that was sealed on NEAR testnet against the chain: `node tools/verify.mjs bundles/rehearsal-quoted-task --rpc testnet`. Show me the full output of each command, and tell me who refused and why. End your reply with the output of that last command, alone in one code block, so I can paste it into https://caesura.mages.city and the page reads its root back from the gate.</pre><button type="button" data-copy="t-agent">copy</button></div>
       </div>
       <div class="term-pane" data-pane="hand">
         <p class="term-say">Three lines, Node 22, no account and no key. They run as written in PowerShell, bash or zsh. The last one reads the root back from the gate on testnet.</p>
@@ -135,7 +135,7 @@ owner.mjs policy</code></pre></article>
         <div class="cmd"><pre id="t-l1">node --env-file=.env.caesura seats/round.mjs --task tasks/quoted-task-memory.json --driver nearai --chain testnet --round demo-1</pre><button type="button" data-copy="t-l1">copy</button></div>
         <div class="cmd"><pre id="t-l2">node tools/verify.mjs bundles/demo-1 --rpc testnet</pre><button type="button" data-copy="t-l2">copy</button></div>
       </div>
-      <label class="term-say" for="t-in">Then paste what the terminal printed, or just a root, and the page looks for it on the gates.</label>
+      <label class="term-say" for="t-in">Then paste what the terminal printed, your agent's whole reply, or just a root, and the page looks for every root in it on the gates.</label>
       <textarea id="t-in" spellcheck="false" placeholder="caesura round … · evidence root sha256:…"></textarea>
       <div class="term-acts"><button type="button" class="btn primary" id="t-go">Read it against the chain</button><span class="term-hint">nothing you paste leaves this page; it only reads the gates' public state</span></div>
       <div class="term-out" id="t-out" aria-live="polite"></div>

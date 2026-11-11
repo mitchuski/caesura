@@ -218,7 +218,9 @@ is the fallback list when the registry cannot be read.
 
 ## Provenance, for the judges
 
-- Built at the NEAR Hackathon, 1–14 November 2026, by mages.city. A private prototype of the
+- Built at the NEAR Hackathon, 1–14 November 2026, by mages.city, a verifiable trust community
+  built on OpenVTC (https://github.com/OpenVTC), from the agentprivacy research
+  (https://agentprivacy.ai). A private prototype of the
   same design was sketched on 20–21 October 2026, after the hackathon announcement; its rounds
   and keys were discarded, and every bundle in `bundles/` and every root on
   `pause.caesura.testnet` and `gap.caesura.testnet` was minted inside the window.
@@ -229,6 +231,7 @@ is the fallback list when the registry cannot be read.
   (ML-DSA-65, SLH-DSA); Node's `node:crypto` for ed25519 and hashing. The second verifier uses
   kappa.py from https://github.com/mitchuski/kappa-evidence-mage. NEAR AI Cloud is the
   inference provider; its signature and attestation endpoints are consumed, not modified.
+  Every source, licence and specification is listed in `NOTICE`.
 - No prior product on another chain. No token. Testnet only; mainnet is the owner's act.
 - Every sealed root, record and thread is also written, as hashes only, on the City's scroll at
   https://near.mages.city, where each hash resolves on https://sigil.mages.city.

@@ -9,7 +9,7 @@
 // the root is committed on-chain.
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { join, relative, resolve } from 'node:path'
 import * as D from '../lib/dcbor.mjs'
 import { mintRound } from '../lib/evidence.mjs'
 import { stubDriver, nearaiDriver, mixedDriver } from './drivers.mjs'
@@ -175,7 +175,9 @@ if (chainMode !== 'off' && !declined) {
 mkdirSync(join(outDir, 'private'), { recursive: true })
 writeFileSync(join(outDir, 'private', 'seats.json'), JSON.stringify({ proposer_prompt: pPrompt, proposer_json: proposed.json, assayer_prompt: aPrompt, assayer_json: assayed.json, inference_ids: [proposed.inference_id, assayed.inference_id].filter(Boolean) }, null, 2) + '\n')
 if (driver.cost) { try { const cost = await driver.cost([proposed.inference_id, assayed.inference_id].filter(Boolean)); if (cost) { writeFileSync(join(outDir, 'cost.json'), JSON.stringify(cost, null, 2) + '\n'); log(`cost of the pause: $${cost.usd.toFixed(5)} (${cost.requests} requests)`) } } catch (e) { log('cost lookup skipped: ' + e.message) } }
-console.log(`done · ${outDir.replace(/\\/g, '/')} · verify: node tools/verify.mjs ${outDir.replace(/\\/g, '/')}`)
+// the bundle's path as seen from where the round was run, never the machine's own folders
+const shown = (relative(process.cwd(), outDir) || '.').replace(/\\/g, '/')
+console.log(`done · ${shown} · verify: node tools/verify.mjs ${shown}`)
 
 // ---- helpers --------------------------------------------------------------------------
 function normaliseAction(a) {

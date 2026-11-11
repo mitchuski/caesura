@@ -1,0 +1,48 @@
+Caesura — keys for agents that cannot act alone
+Copyright 2026 Soulbis / mages.city
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Built at the NEAR Hackathon, 1–14 November 2026, by mages.city, a verifiable trust
+community built on OpenVTC (https://github.com/OpenVTC), from the agentprivacy research
+(https://agentprivacy.ai).
+
+Work of ours this repository builds on
+--------------------------------------
+- agentprivacy dual-agent harness — https://github.com/mitchuski/agentprivacy-harness
+  (Apache-2.0). The two held-apart seats follow its method; lib/dcbor.mjs is its
+  canonical-encoding module (tools/dcbor.mjs there), carried here unchanged.
+- kappa-evidence-mage — https://github.com/mitchuski/kappa-evidence-mage (code Apache-2.0,
+  documents CC BY 4.0).
+  The evidence bundle layout (objects, blobs, edges, one root) follows its ledgers, and the
+  second verifier, tools/verify_py.py, imports its kappa.py at run time; no copy is vendored.
+
+Open-source software used
+-------------------------
+- near-sdk-rs 5.29 (MIT OR Apache-2.0) — the gate and registry contracts.
+- near-api-js 7 (MIT AND Apache-2.0) — chain calls from the seats and tools.
+- @noble/post-quantum 0.7, with @noble/hashes and @noble/curves (MIT, Paul Miller) —
+  ML-DSA-65 (FIPS 204) and SLH-DSA-SHA2-128s (FIPS 205).
+- Node.js built-ins (node:crypto, node:test) — ed25519, SHA-256, SHA3-256, the test runner.
+- The full dependency tree and its licences are in package-lock.json and the two Cargo.lock files.
+
+Specifications followed
+-----------------------
+- Deterministic CBOR (dCBOR), draft-mcnally-deterministic-cbor — canonical encoding of every object.
+- IETF LAMPS composite signature drafts — the shape of the hybrid signing message.
+- NEP-297 — contract events.
+
+Services
+--------
+- NEAR AI Cloud — private inference for both seats; its signature and attestation endpoints
+  are consumed, not modified. Deeper TDX and NVIDIA checks are left to nearai-cloud-verifier.
+- NEAR testnet — the gates pause.caesura.testnet and gap.caesura.testnet, and the registry.
+
+The site
+--------
+- Fonts: Cormorant Garamond and JetBrains Mono (SIL Open Font License 1.1), served by Google Fonts.
+
+How it was written
+------------------
+Code and prose were written by Claude Code agents working under the agentprivacy dual-agent
+harness, directed and reviewed by Mitchell Travers.

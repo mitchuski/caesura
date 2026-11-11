@@ -306,40 +306,55 @@ const SUITE_TITLE = { 'ed25519': 'ed25519 signed', 'mldsa65-ed25519': 'ML-DSA-65
   }
   function read() {
     var text = input.value || ''; out.innerHTML = ''
-    var m = /evidence root\s+(sha256:[0-9a-f]{64})/.exec(text) || /(sha256:[0-9a-f]{64})/.exec(text) || /\b([0-9a-f]{64})\b/.exec(text)
-    if (!m) { line('no', '✕', 'no root found in what you pasted. Look for a line like "evidence root sha256:…".'); return }
-    var root = m[1].indexOf('sha256:') === 0 ? m[1] : 'sha256:' + m[1]
-    var pass = /VERIFY:\s*PASS/.test(text), fail = /VERIFY:\s*FAIL/.test(text)
+    // every evidence root in the paste, in order: a whole agent reply carries more than one round
+    var roots = [], re = /evidence root\s+(sha256:[0-9a-f]{64})/g, m
+    while ((m = re.exec(text))) if (roots.indexOf(m[1]) < 0) roots.push(m[1])
+    if (!roots.length) {
+      m = /(sha256:[0-9a-f]{64})/.exec(text) || /\b([0-9a-f]{64})\b/.exec(text)
+      if (m) roots.push(m[1].indexOf('sha256:') === 0 ? m[1] : 'sha256:' + m[1])
+    }
+    if (!roots.length) { line('no', '✕', 'no root found in what you pasted. Look for a line like "evidence root sha256:…".'); return }
+    var passes = (text.match(/VERIFY:\s*PASS/g) || []).length, fail = /VERIFY:\s*FAIL/.test(text)
     var local = /gate \(local\)\s*→\s*(.+)/.exec(text)
-    line('mute', '·', 'root ' + root)
+    line('mute', '·', roots.length === 1 ? 'root ' + roots[0] : roots.length + ' roots in what you pasted')
     line('mute', '·', 'reading the gates on NEAR testnet…')
     go.disabled = true
     gates().then(function (gs) {
       return Promise.all(gs.map(function (g) { return view(g.network, g.id, 'list_roots', { from: 0, limit: 200 }).then(function (rows) { return { g: g, rows: rows || [] } }).catch(function () { return { g: g, rows: [] } }) }))
     }).then(function (all) {
-      var hit = null
-      all.forEach(function (x) { x.rows.forEach(function (r) { if (r.root === root) hit = { g: x.g, r: r } }) })
       out.removeChild(out.lastChild)
-      if (!hit) {
-        line('mute', '○', 'not on a gate: ' + all.length + ' gates read, none carries this root.')
-        if (local) line('ok', '✓', 'a local round (--chain off). Its gate said: ' + local[1].trim())
-        if (pass) line('ok', '✓', 'your verifier printed VERIFY: PASS, so every hash in the bundle re-derives to this root.')
+      var props = {}
+      function proposals(g) { return props[g.id] || (props[g.id] = view(g.network, g.id, 'list_proposals', { from: 0, limit: 200 })) }
+      var found = 0
+      return roots.reduce(function (chain, root) {
+        return chain.then(function () {
+          var hit = null
+          all.forEach(function (x) { x.rows.forEach(function (r) { if (r.root === root) hit = { g: x.g, r: r } }) })
+          if (roots.length > 1) line('mute', '·', 'root ' + root)
+          if (!hit) {
+            line('mute', '○', 'not on a gate: ' + all.length + ' gates read, none carries this root.')
+            if (local) line('ok', '✓', 'a local round (--chain off). Its gate said: ' + local[1].trim())
+            return
+          }
+          found++
+          line('ok', '✓', 'found on ' + hit.g.id + ' · proposal #' + hit.r.proposal_id + ' · round ' + hit.r.round, EXPLORER[hit.g.network] + '/address/' + hit.g.id, 'the gate ↗')
+          return proposals(hit.g).then(function (ps) {
+            var p = (ps || []).filter(function (x) { return x.id === hit.r.proposal_id })[0]
+            if (p) {
+              var s = String(p.status || '').toLowerCase(), why = p.refusal || ''
+              var by = s !== 'refused' ? '' : /^verdict/.test(why) ? 'the second seat (the assayer)' : /^paused/.test(why) ? 'the owner' : 'the gate\'s policy'
+              line('mute', '·', 'proposed → ' + p.action.receiver_id + ' · ' + NEAR(p.action.deposit) + ' Ⓝ' + (p.action.method_name ? ' · ' + p.action.method_name : ''))
+              if (s === 'refused') { line('no', '‖', 'refused, held by ' + by); line('mute', '·', why) }
+              else if (s === 'executed') line('ok', '→', 'executed: both seats and the policy held, and the spend went through')
+              else line('mute', '·', 'status: ' + s)
+            }
+            line('ok', '✓', 'the root you pasted is the root the gate carries for that proposal.', '#board', 'see it on the board')
+          })
+        })
+      }, Promise.resolve()).then(function () {
         if (fail) line('no', '✕', 'your verifier printed VERIFY: FAIL.')
-        line('mute', '·', 'To see it here, run the round with --chain testnet on a gate, or verify a sealed round with --rpc testnet.')
-        return
-      }
-      line('ok', '✓', 'found on ' + hit.g.id + ' · proposal #' + hit.r.proposal_id + ' · round ' + hit.r.round, EXPLORER[hit.g.network] + '/address/' + hit.g.id, 'the gate ↗')
-      return view(hit.g.network, hit.g.id, 'list_proposals', { from: 0, limit: 200 }).then(function (props) {
-        var p = (props || []).filter(function (x) { return x.id === hit.r.proposal_id })[0]
-        if (p) {
-          var s = String(p.status || '').toLowerCase(), why = p.refusal || ''
-          var by = s !== 'refused' ? '' : /^verdict/.test(why) ? 'the second seat (the assayer)' : /^paused/.test(why) ? 'the owner' : 'the gate\'s policy'
-          line('mute', '·', 'proposed → ' + p.action.receiver_id + ' · ' + NEAR(p.action.deposit) + ' Ⓝ' + (p.action.method_name ? ' · ' + p.action.method_name : ''))
-          if (s === 'refused') { line('no', '‖', 'refused, held by ' + by); line('mute', '·', why) }
-          else if (s === 'executed') line('ok', '→', 'executed: both seats and the policy held, and the spend went through')
-          else line('mute', '·', 'status: ' + s)
-        }
-        line('ok', '✓', 'the root you pasted is the root the gate carries for that proposal.' + (pass ? ' Your verifier agrees: VERIFY: PASS.' : ''), '#board', 'see it on the board')
+        else if (passes) line('ok', '✓', 'your verifier printed VERIFY: PASS' + (passes > 1 ? ' ' + passes + ' times' : '') + ', so every hash in ' + (passes > 1 ? 'each bundle' : 'the bundle') + ' re-derives to its root.')
+        if (!found) line('mute', '·', 'To see it here, run the round with --chain testnet on a gate, or verify a sealed round with --rpc testnet.')
       })
     }).catch(function (e) { line('no', '✕', 'could not reach testnet: ' + e.message) }).then(function () { go.disabled = false })
   }
